@@ -19,7 +19,7 @@ a {color: #2d73b3;}
 a:hover {color: #6690aa;}
 
 body {
-	background: #333 url(img/pattern_074.gif);
+	background: #333 url(images/pattern_074.gif);
 	color: #333;
 	font: normal 62.5% "Lucida Sans Unicode",sans-serif;
 	margin: 3% 0;
@@ -32,7 +32,7 @@ p,ul {
 ul {margin-left: 1.2em;}
 
 li {list-style: none;}
-.main li {list-style-image: url(img/li.gif);}
+.main li {list-style-image: url(images/li.gif);}
 
 h1 {font-size: 1.2em;}
 
@@ -61,7 +61,7 @@ h1,h2,h3 {color: #4e98b7;}
 /* structure */
 .container {
 	font-size: 1.2em;
-	background: url(img/bgcontainer.gif) repeat-y;
+	background: url(images/bgcontainer.gif) repeat-y;
 	margin: 0 auto;
 	width: 840px;
 	border: 12px solid #222;
@@ -71,7 +71,7 @@ h1,h2,h3 {color: #4e98b7;}
 .header {
 	float: left;
 	width: 640px;
-	background: url(img/header.jpg) no-repeat;
+	background: url(images/header.jpg) no-repeat;
 	font: normal 2.4em Verdana,sans-serif;
 	line-height: 150px;
 	text-align: center;	
@@ -129,7 +129,7 @@ h1,h2,h3 {color: #4e98b7;}
 
 /* footer */
 .footer {
-	background: url(img/bgfooter.gif) repeat-x;
+	background: url(images/bgfooter.gif) repeat-x;
 	color: #CCC;
 	font-size: 0.9em;
 	line-height: 39px;
