@@ -15,7 +15,12 @@ def layout
 end
 
 def blog_content
-  YAML.load_file(THIS_DIRECTORY + "/blog.yml")
+  YAML.load_file(THIS_DIRECTORY + "/blog.yml").map do |blog_post|
+    content = blog_post["content"]
+    content = "<p>#{content}</p>"
+    blog_post["content"] = content.gsub "\n", "</p><p>"
+    blog_post
+  end
 end
 
 def feed_content
