@@ -96,7 +96,7 @@ end
 def github_api(env)
   request = Rack::Request.new(env)
   payload = JSON.parse request.POST["payload"]
-  BUCKET << paylaod
+  BUCKET << payload
   # if request.post?
   #   payload = JSON.parse(env["rack.input"].read)
   # end
