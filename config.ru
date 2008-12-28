@@ -97,6 +97,7 @@ def github_api(env)
   request = Rack::Request.new(env)
   payload = JSON.parse request.POST["payload"]
   BUCKET << payload
+  `git checkout .; git pull`
   html "ok"
   # if request.post?
   #   payload = JSON.parse(env["rack.input"].read)
