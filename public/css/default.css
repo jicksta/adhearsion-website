@@ -70,7 +70,7 @@ h1,h2,h3 {color: #4e98b7;}
 /* header */
 #header {
 	float: left;
-	width: 640px;
+	width: 639px;
 	background: url(/images/header.jpg) no-repeat;
 	font: normal 2.4em Verdana,sans-serif;
 	line-height: 150px;
