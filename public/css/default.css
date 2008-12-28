@@ -13,13 +13,13 @@ Feel free to use and modify but please provide credits.
 	margin: 0;
 	padding: 0;
 }
-/* ??? */
+
 a {color: #2d73b3;}
 
 a:hover {color: #6690aa;}
 
 body {
-	background: #333 url(/images/pattern_074.gif);
+	background: url(/images/pattern_074.gif);
 	color: #333;
 	font: normal 62.5% "Lucida Sans Unicode",sans-serif;
 	margin: 3% 0;
@@ -68,13 +68,22 @@ h1,h2,h3 {color: #4e98b7;}
 }
 
 /* header */
-.header {
+#header {
 	float: left;
 	width: 640px;
 	background: url(/images/header.jpg) no-repeat;
 	font: normal 2.4em Verdana,sans-serif;
 	line-height: 150px;
 	text-align: center;	
+}
+
+#header h1 {
+  height: 150px;
+  width: 640px;
+}
+
+#header h1 a {
+  display: none;
 }
 
 /* structure */
