@@ -92,10 +92,10 @@ end
 
 def github_api(env)
   request = Rack::Request.new(env)
-  BUCKET << 
-  if request.post?
-    payload = JSON.parse(URI.unescape(env["rack.input"].read))["payload"]
-  end
+  BUCKET << JSON.parse(URI.unescape(env["rack.input"].read))
+  # if request.post?
+  #   payload = JSON.parse(URI.unescape(env["rack.input"].read))["payload"]
+  # end
 end
 
 def view_bucket(env)
@@ -106,7 +106,7 @@ pages = Rack::URLMap.new(PAGES)
 
 dynamic = Rack::URLMap.new \
     "/feed"       => method(:feed),
-    "/github_api" => method(:github_api)
+    "/github_api" => method(:github_api),
     "/bucket"     => method(:view_bucket)
 
 cascade = Rack::Cascade.new([method(:homepage), dynamic, pages])
