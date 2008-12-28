@@ -1,6 +1,9 @@
 require 'active_support'
+require 'ostruct'
 
 THIS_DIRECTORY = File.dirname __FILE__
+
+BUCKET = []
 
 PAGES = Dir.glob(THIS_DIRECTORY + "/pages/*.html").inject({}) do |url_map, filename|
   page_name = "/" + File.basename(filename, ".html")
@@ -88,20 +91,25 @@ def homepage(env)
 end
 
 def github_api(env)
+  request = Rack::Request.new(env)
+  BUCKET << 
   if request.post?
     payload = JSON.parse(URI.unescape(env["rack.input"].read))["payload"]
   end
 end
 
+def view_bucket(env)
+  [200, {"Content-Type" => "text/plain"}, BUCKET.pretty_inspect]
+end
+
 pages = Rack::URLMap.new(PAGES)
 
 dynamic = Rack::URLMap.new \
-    "/feed"  => method(:feed),
+    "/feed"       => method(:feed),
     "/github_api" => method(:github_api)
-    
-homepage = Rack::URLMap.new "/" => method(:homepage)
+    "/bucket"     => method(:view_bucket)
 
-cascade = Rack::Cascade.new([homepage, dynamic, pages])
+cascade = Rack::Cascade.new([method(:homepage), dynamic, pages])
 
 site = Rack::Static.new(cascade, :root => "public", :urls => ["/images", "/css"])
 
