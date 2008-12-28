@@ -2,12 +2,21 @@
 
 <h2>Adhearsion is for Ruby on Rails?</h2>
 
-<p>This is one of the biggest misconceptions about Adhearsion. It should be strongly stressed that Adhearsion is a Ruby framework, <strong>not</strong> a Ruby on Rails framework. Ruby on Rails, a <strong>web</strong> development framework, is probably the most popular Ruby software, but it has little to do with the Ruby language per se besides simply using it. The Ruby language is a general purpose programming language with which both Ruby on Rails and Adhearsion are written.</p>
+<p>This is one of the biggest misconceptions about Adhearsion. It should be strongly stressed that Adhearsion is a Ruby framework, <strong>not</strong> a Ruby on Rails plugin or the like. Ruby on Rails, a <strong>web</strong> development framework, is probably the most popular Ruby software, but it has little to do with the Ruby language per se besides simply using it. The Ruby language is a general purpose programming language with which both Ruby on Rails and Adhearsion are written.</p>
 
 <p>Adhearsion does help facilitate integration with Rails applications and it shares a few libraries with Rails, such as ActiveSupport and ActiveRecord.</p>
 
 <h2>How can Adhearsion talk to landline or cell phones without special hardware?</h2>
-<p></p>
+
+<p>This is usually so simple that it can catch people by surprise. With the proliferation of VoIP over the past few years, many VoIP providers have sprung up which offer very inexpensive so-called "termination" services. Skype and Vonage are popular examples of these. The term "termination" simply means that they operate the technologies that turn a VoIP call made up of internet packets into a phone call on the entirely separate public telephone network.</p>
+  
+<p>When funneling all calls through a service provider like this, it's often called "trunking" because, like the trunk of a tree, the many branches converge into one big point all the way to the ground where the roots then branch from the tree.</p>
+
+<p>The following diagram should help illustrate how it works.</p>
+
+<img src="/images/telephony-topology.jpg" alt="Diagram of telephony topology"/>
+
+<p>The VoIP protocol most often used for the VoIP calling is called Session Initiation Protocol or SIP. If you're looking for services which offer this.</p>
 
 <h2>What is Asterisk?</h2>
 <p>Asterisk is an open-source telephony-engine which Adhearsion abstracts.</p>
@@ -31,6 +40,15 @@
   
 </ul>
 
+<h2>Can Adhearsion do Automatic Speech Recognition (ASR)?</h2>
+<p></p>
+
+<h2>Can Adhearsion do Text to Speech (TTS)?</h2>
+<p></p>
+
+<h2>Is Ruby slow?</h2>
+<p>TODO. The telephony engine beneath Adhearsion will likely break down before Adhearsion does.</p>
+
 <h2>How mature is the project?</h2>
 <p>Adhearsion is production-worthy but, like most software, don't consider it to be totally bug-free. Adhearsion was first released on Christmas of 2006 publicly, though its inception dates many months prior to that.</p>
 
@@ -42,7 +60,7 @@
 <p>Adhearsion works with Ruby 1.8.x versions of Adhearsion (starting at 1.8.6) and JRuby 1.1 or later. JRuby has the distinct advantage of being able to run Adhearsion on the Java Virtual Machine, allowing you to use virtually any Java library in existence right in your Adhearsion application. The normal Ruby interpreter has fewer dependencies and is what's generally used in Adhearsion applications at the time being.</p>
 
 <h2>Do I have to recompile Asterisk to use Adhearsion?</h2>
-<p>Nope!</p>
+<p>Not at all! Adhearsion communicates with Asterisk </p>
 
 <h2>Can I try Adhearsion safely on my production Asterisk machine?</h2>
 <p>Yep! You can have a special SIP account route exclusively to Adhearsion very easily, leaving the rest of the logic perfectly intact. You can even have a single <em>extension</em> route to Adhearsion if you'd like.</p>
@@ -50,32 +68,4 @@
 <p>Can't guarantee that Asterisk won't die (likely through race conditions causing a segfault) or suffer memory leaks from Adhearsion using its API. For example, the Asterisk Manager Interface feature of Asterisk (which Adhearsion optionally uses) used to cause crashes. Nothing in Adhearsion is particularly abusive, but Asterisk has been known to arbitrarily fall over. For a production phone system, you should always consider using a process watchdog such as <a href="http://mmonit.com/monit">monit</a>.</p>
 
 <h2>How does Adhearsion run on the JVM?</h2>
-<p>JRuby</p>
-
-<h2>Can I use </h2>
-<p></p>
-
-
-<h2></h2>
-<p></p>
-
-
-<h2></h2>
-<p></p>
-
-
-<h2></h2>
-<p></p>
-
-
-<h2></h2>
-<p></p>
-
-
-<h2></h2>
-<p></p>
-
-
-<h2></h2>
-<p></p>
-
+<p>The <a href="http://jruby.codehaus.org">JRuby</a> interpreter is a full re-implementation of the Ruby programming langauge using only Java. Adhearsion strives to maintain 100% compatibility with the mainline Ruby interpreter (called Matz's Ruby Interpreter or MRI) and JRuby.</p>
