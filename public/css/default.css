@@ -50,6 +50,22 @@ blockquote p {padding: 3px 0;}
 
 h1,h2,h3 {color: #4e98b7;}
 
+.main h1 {
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: 12px;
+}
+
+.main h2 {
+  margin-top: 15px;
+  margin-bottom: 8px;
+}
+
+.main h3 {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
 /* misc */
 .clearer {clear: both;}
 .main_right .padded {padding: 6px 2px 6px 16px;}
@@ -65,6 +81,15 @@ h1,h2,h3 {color: #4e98b7;}
 	margin: 0 auto;
 	width: 840px;
 	border: 12px solid #222;
+}
+
+pre {
+  font-family: Monaco, monospace;
+  font-size: 13px;
+  border: 1px dotted #ddd;
+  background-color: #eee;
+  padding: 4px 4px 4px 10px;
+  margin: 0 5px 10px 10px;
 }
 
 /* header */
