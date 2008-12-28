@@ -1,5 +1,8 @@
 require 'active_support'
 require 'ostruct'
+require 'pp'
+require 'json'
+require 'uri'
 
 THIS_DIRECTORY = File.dirname __FILE__
 
@@ -92,9 +95,10 @@ end
 
 def github_api(env)
   request = Rack::Request.new(env)
-  BUCKET << JSON.parse(URI.unescape(env["rack.input"].read))
+  payload = JSON.parse request.POST["payload"]
+  BUCKET << paylaod
   # if request.post?
-  #   payload = JSON.parse(URI.unescape(env["rack.input"].read))["payload"]
+  #   payload = JSON.parse(env["rack.input"].read)
   # end
 end
 
