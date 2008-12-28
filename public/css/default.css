@@ -34,7 +34,7 @@ ul {margin-left: 1.2em;}
 li {list-style: none;}
 .main li {list-style-image: url(/images/li.gif);}
 
-h1 {font-size: 1.2em;}
+.main_right h1 {font-size: 1.2em;}
 
 blockquote {
 	background: #FFF;
