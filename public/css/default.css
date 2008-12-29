@@ -19,7 +19,7 @@ a {color: #2d73b3;}
 a:hover {color: #6690aa;}
 
 body {
-	background: url(/images/pattern_074.gif);
+	background: url(/images/pattern_062.gif);
 	color: #333;
 	font: normal 62.5% "Lucida Sans Unicode",sans-serif;
 	margin: 3% 0;
@@ -48,7 +48,7 @@ blockquote {
 }
 blockquote p {padding: 3px 0;}
 
-h1,h2,h3 {color: #4e98b7;}
+h1,h2,h3 {color: #5fc6e9;}
 
 .main h1 {
   margin-top: 0;
@@ -149,7 +149,7 @@ pre {
 	list-style: none;
 }
 .subnav li a {
-	background: #def5ff;	
+	background: #eee;	
 	color: #111;
 	display: block;
 	padding: 8px 0 8px 12px;
@@ -157,8 +157,8 @@ pre {
 	text-decoration: none;
 }
 .subnav li a:hover {
-	background: #b4dcec;
-	color: #000;
+	background: black;
+	color: #5fc6e9;
 }
 
 /* footer */
