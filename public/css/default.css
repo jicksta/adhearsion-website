@@ -83,8 +83,12 @@ h1,h2,h3 {color: #5fc6e9;}
 	border: 12px solid #222;
 }
 
-pre {
+pre, kbd {
   font-family: Monaco, monospace;
+}
+
+pre {
+  
   font-size: 13px;
   border: 1px dotted #ddd;
   background-color: #eee;
@@ -157,8 +161,7 @@ pre {
 	text-decoration: none;
 }
 .subnav li a:hover {
-	background: black;
-	color: #5fc6e9;
+	background: white;
 }
 
 /* footer */
