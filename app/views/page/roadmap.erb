@@ -1,0 +1,43 @@
+<h1>Roadmap</h1>
+
+<h2>0.8.1</h2>
+<h3>Call Routing DSL</h3>
+
+<p>The Call Routing DSL is a way of de-coupling call routing logic from the dialplan and other parts of the framework. The dial() method will simply take a number and the logic for passing that into a trunk will be handled by these user-defined call routes.</p>
+
+<h2>0.8.2</h2>
+
+<h3>Expanded configuration file generators</h3>
+<p>This is actually a feature already mostly implemented, but before it's thoroughly integrated into the rest of Adhearsion, things such as the call-routing DSL, new components system, new AMI library and new events system must be implemented properly. As a note, the configuration file generators of Adhearsion will work especially well when dealing with Asterisk clusters, helping keep config file in sync across nodes. The generators will also probably replace Rubigen, the current library used by Adhearsion to aid generating new projects with the "ahn" command.</p>
+
+<h2>0.8.3</h2>
+
+<h3>Migrate Adhearsion tests back to RSpec</h3>
+<p>Presently Adhearsion uses a Ruby testing framework called Test-Spec, though it has a much smaller community and not nearly the number of features as a competing framework called RSpec. Adhearsion was once on RSpec quite a while ago and, in this release, it'll be back on it. It's a good rule of thumb for serious programming efforts to periodically refactor their unit tests and this will be good timing for the due maintenance.</p>
+
+<h3>Application testing framework</h3>
+<p>Testing individual telephony applications is extremely difficult. The innovations being rolled into Adhearsion before this release will dramatically help the testability of telephony applications. After this release, all applications will be relatively testable to ensure QA programatically. Some of this functionality will be built upon <a href="http://sipper.agnity.com">SIPr</a>.</p>
+
+<h2>0.9.0</h2>
+
+<h3>FreeSWITCH compatibility</h3>
+<p>FreeSWITCH is another open-source telephony engine which has been catching on over the past couple years and offers some interesting benefits to application frameworks like Adhearsion that Asterisk presently cannot offer. Adhearsion's dialplan and other framework features will be available to FreeSWITCH-powered Adhearsion applications.</p> 
+
+<h3>YATE compatibility</h3>
+
+<p>Yate is a open-source telephony engine which promotes the philosophy that, with a good API exposed, it should be possbile for virtually any kind of application to be built atop it. YATE doesn't have things such as voicemail, queues/agents, a featureful conferencing abstraction or other common FS or Asterisk things, leaving that to Adhearsion to implement. This is actually ideal, though it's not certain how possible or easy it will be to implement these atop YATE.</p>
+
+
+  <h2>Older milestones</h2>
+  
+  <h2>0.8.0</h2>
+  
+  <h3>events.rb / Theatre</h3>
+  
+  <p>New Adhearsion applications now have an events.rb file in which various event callbacks can be handled. This is primarily useful for specifying custom application-level logic for components or framework features.</p>
+  
+  <h3>New Components system</h3>
+  <p>The existing object-oriented component system will be replaced with one which is method+module based.</p>
+  
+  <h3>New AMI library</h3>
+  <p>The existing AMI library will be replaced with a refactored, cleaner version which is more tightly integrated with the new events.rb system.</p>

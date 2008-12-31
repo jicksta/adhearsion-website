@@ -1,33 +1,3 @@
-require 'active_support'
-require 'ostruct'
-require 'pp'
-require 'json'
-require 'uri'
-
-THIS_DIRECTORY = File.dirname __FILE__
-
-BUCKET = []
-
-PAGES = Dir.glob(THIS_DIRECTORY + "/pages/*.html").inject({}) do |url_map, filename|
-  page_name = "/" + File.basename(filename, ".html")
-  url_map[page_name] = lambda do |env|
-    render_page(env, filename)
-  end
-  url_map
-end
-
-def layout
-  File.read THIS_DIRECTORY + "/index.html"
-end
-
-def blog_content
-  YAML.load_file(THIS_DIRECTORY + "/blog.yml").map do |blog_post|
-    content = blog_post["content"]
-    content = "<p>#{content}</p>"
-    blog_post["content"] = content.gsub "\n", "</p><p>"
-    blog_post
-  end
-end
 
 def feed_content
   blog_content.map do |feed_item|
@@ -37,10 +7,6 @@ def feed_content
     # feed_item["link"] = x"http://adhearsion.com/#{feed_item['id']}"
     feed_item
   end
-end
-
-def html(body, headers={})
-  [200, { "Content-Type" => "text/html" }.merge(headers), body]
 end
 
 def feed(env)
@@ -67,32 +33,6 @@ def feed(env)
   [200, {"Content-Type" => "application/atom+xml"}, xml % entries]
 end
 
-def render_page(env, filename)
-  page_name = File.basename(filename, ".html")
-  page_contents = File.read filename
-  html layout % page_contents
-end
-
-def dispatch(request)
-  request = Rack::Request.new(request)
-  send(request.request_method.downcase, request) rescue nil
-end
-
-def homepage(env)
-  return [404, {}, ""] if env["PATH_INFO"] != "/"
-  blog_posts = blog_content.map do |blog_post|
-    blog_post = OpenStruct.new(blog_post)
-    <<-HTML
-      <div class="blog_post">
-        <h1>#{blog_post.title}</h1>
-        <p class="meta">#{Time.parse(blog_post.updated).strftime("%B %d, %Y")}</p>
-        #{blog_post.content}
-      </div>
-    HTML
-  end
-  html layout % blog_posts.join("\n\n")
-end
-
 def github_api(env)
   request = Rack::Request.new(env)
   payload = JSON.parse request.POST["payload"]
@@ -104,19 +44,6 @@ def github_api(env)
   # end
 end
 
-def view_bucket(env)
-  [200, {"Content-Type" => "text/plain"}, BUCKET.pretty_inspect]
-end
-
-pages = Rack::URLMap.new(PAGES)
-
 dynamic = Rack::URLMap.new \
     "/feed"       => method(:feed),
     "/github_api" => method(:github_api),
-    "/bucket"     => method(:view_bucket)
-
-cascade = Rack::Cascade.new([method(:homepage), dynamic, pages])
-
-site = Rack::Static.new(cascade, :root => "public", :urls => ["/images", "/css"])
-
-run site
