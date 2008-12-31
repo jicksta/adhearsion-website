@@ -1,5 +1,9 @@
 class PageController < ApplicationController
   
+  def index
+    @blog_posts = BlogPost.find :all
+  end
+  
   def architecture
     @title = "Architecture Overview"
   end
