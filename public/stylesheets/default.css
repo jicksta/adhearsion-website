@@ -176,3 +176,56 @@ pre {
 .footer .left,.footer .right {padding: 0 16px;}
 .footer a {color: #EEE;}
 .footer a:hover {color: #FAFCB0;}
+
+
+#sandbox-registration {
+  background-color: #2089b3;
+  color: white;
+  padding: 15px 15px 0px 15px;
+  margin: 10px 0 10px 10px;
+  width: 210px;
+  float: right;
+}
+
+#sandbox-registration h3, #sandbox-registration a {
+  color: white;
+}
+
+#sandbox-registration p.form-error {
+  color: white;
+  margin: 4px 0 0 0;
+  padding: 4px;
+  background-color: red;
+  border: 2px solid red;
+  width: 192px;
+}
+
+#sandbox-registration h2 {
+  margin: -15px -15px 8px -15px;
+  border-bottom: #2089b3 6px double;
+  border-top: 3px solid #2089b3;
+  border-right: 3px solid #2089b3;
+  border-left: 3px solid #2089b3;
+  padding: 10px 0 10px 0;
+  background-color: white;
+  color: black;
+  text-align: center;
+  font-size: 23px;
+}
+#sandbox-registration label {
+  font-size: 15px;
+}
+
+#sandbox-registration label.header {
+  display: block;
+  font-size: 18px;
+}
+
+#sandbox-registration input[type=text], #sandbox-registration input[type=password], #sandbox-registration input[type=submit] {
+  font-size: 18px;
+  width: 200px;
+}
+
+#sandbox-registration .bad-input {
+  background-color: red;
+}
