@@ -4,6 +4,11 @@ class PageController < ApplicationController
     @blog_posts = BlogPost.find :all
   end
   
+  def getting_started
+    @title = "Getting Started"
+    @sandbox_user = SandboxUser.new
+  end
+  
   def architecture
     @title = "Architecture Overview"
   end
@@ -34,10 +39,6 @@ class PageController < ApplicationController
   
   def faq
     @title = "Frequently Asked Questions"
-  end
-  
-  def getting_started
-    @title = "Getting Started"
   end
   
   def irc
