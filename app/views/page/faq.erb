@@ -58,11 +58,11 @@
 
 <h2>Is Adhearsion an MVC framework?</h2>
 
-<p>No. We do not believe MVC lends itself to voice development and more of a 'Model Controller' paradigm makes sense, which Adhearsion employs.</p>
+<p>No, Adhearsion is more "MC", with no View. In the RESTful web, it's easy to understand the utility of a view: a particular RESTful resource can be rendered in different formats as requested. With telephony, there's no "rendering" step and no (substantive) content besides audio. Are audio waves some kind of view? We certainly don't think so. If someone can demonstrate a truly useful example of why MVC (or another paradigm) is appropriate, we'll certainly consider it.</p>
 
 <h2>Can Adhearsion do Automatic Speech Recognition (ASR)?</h2>
 
-<p>Adhearsion does support the ability to call third party ASR libraries through customization. These may be, but are not precluded to, Lumenvox, Nuance or <a href="http://cmusphinx.sourceforge.net/html/cmusphinx.php">CMUSphinx</a> (open source).</p>
+<p>Adhearsion does support the ability to call third party ASR libraries through components. These may be, but are not limited to, Lumenvox, Nuance or <a href="http://cmusphinx.sourceforge.net/html/cmusphinx.php">CMUSphinx</a>.</p>
 
 <h2>Can Adhearsion do Text to Speech (TTS)?</h2>
 
@@ -70,7 +70,7 @@
 
 <h2>Is Adhearsion slow because of Ruby?</h2>
 
-<p>The bottom line is Adhearsion will probably not be your bottleneck. Often, especially with Asterisk, it will be the telephony engine underneath Adhearsion that will be your bottleneck. The servicing of a call with Adhearsion is almost always computationally simpler than serving even one page load with Ruby on Rails, with the main distinction that an Adhearsion call maintains a Thread and is a back-and-forth dialog, not one big textual response.</p>
+<p>The bottom line is Adhearsion will probably not be your bottleneck. Often, especially with Asterisk, it will be the telephony engine underneath Adhearsion that will be limiting your scaling. The servicing of a call with Adhearsion is almost always computationally simpler than serving even one page load with Ruby on Rails, with the main distinction that an Adhearsion call maintains a Thread and is a back-and-forth dialog, not one big textual response.</p>
 
 <p>That said, if you do experience Adhearsion to be a bottleneck, you can always scale it horizontally, balancing calls between Adhearsion instances. Because Adhearsion supports message queues and database integration, dealing with shared state between Adhearsion instances is extremely easy.</p>
 
@@ -80,7 +80,7 @@
 
 <h2>Does Adhearsion run on Windows?</h2>
 
-<p>Not officially, please refer to the <a href="http://www.adhearsion.com/roadmap">roadmap</a> for future testing and official support. The main element that may preclude current Windows support is that the daemon library that Adhearsion uses (for ahn and jahn commands) may need to be an alternative library or a Win32Service library.</p>
+<p>Not officially, though any Windows incompatibility is considered a bug and will therefore be fixed with due urgency. There are various technological inconsistencies when trying to make Windows behave normally vis-à-vis Linux / BSD / Unix. Adhearsion's developers are all Mac OS X and Linux users, therefore Windows bugs are not found immediately.</p>
 
 <h2>Do I have to recompile Asterisk to use Adhearsion?</h2>
 
@@ -92,4 +92,4 @@
 
 <h2>Can I try Adhearsion safely on my production Asterisk machine?</h2>
 
-<p>Yes! You can have a special SIP account route exclusively to Adhearsion very easily, leaving the rest of the logic perfectly intact. You can even have a single <em>extension</em> route to Adhearsion if you'd like.</p>
+<p>Yes! You can have a special SIP account route exclusively to Adhearsion very easily, leaving the rest of the logic perfectly intact. You can even have a single <em>extension</em> route to Adhearsion if you'd like. You Asterisk installation's extensions.conf only has to invoke the AGI application <em>somewhere</em> in it. We leave it up to you to choose where.</p>
