@@ -1,11 +1,148 @@
 <h1>Getting Started</h1>
 
-<p>Because Adhearsion is a framework for writing telephony application, it depends on a bit of lower-level plumbing to get running. This is generally quite easy to set up but it does take a lot of time and requires the developer to jump through unnecessary hoops at the outset.</p>
-
-<p>To help people jump straight to using Adhearsion, we've set up a public, <strong>completely free</strong> sandbox environment. You'll need only</p>
+<p>Because Adhearsion is a framework for writing telephony applications, it depends on a bit of lower-level plumbing to get an application running. Because we want to remove all possible points of friction for newcomers, we've set up a <strong>totally free</strong> sandbox telephony system which allows you to use Adhearsion without setting up Asterisk. You won't be able to dial out to landline and cell phones but you will be able to get a good idea of what Adhearsion is and how it works.</p>
 
 <%= render :partial => "sandbox_registration" %>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in metus. In metus quam, dictum in, rutrum a, elementum et, mi. Nulla venenatis mauris eu eros. Cras in mi vitae orci cursus molestie. Sed tellus nunc, elementum a, commodo eu, dictum in, neque. Curabitur eget quam vel ante vestibulum consectetur. Quisque suscipit. Maecenas convallis erat id felis. Quisque eu urna nec lectus ultrices imperdiet. Nunc sagittis libero eu dolor. Nulla facilisi. Quisque vel pede sit amet dui egestas feugiat. Morbi velit enim, semper eget, dictum vitae, dapibus nec, mi. Aliquam sed orci. Ut purus dolor, dapibus et, pretium vitae, tristique et, lectus. Duis ut dui. Proin vel enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris a nisl. Pellentesque libero tellus, ornare vitae, fermentum vel, porttitor ut, erat.</p>
+<p>We'll go into these steps in more detail but, at a high level, this is all that is required to use the sandbox.</p>
 
-<p>Donec consectetur turpis sed orci. Curabitur eros quam, dapibus id, porttitor in, gravida in, est. Nam quis purus. Mauris gravida, dui quis vulputate egestas, diam tortor iaculis tortor, sed volutpat dui leo sed eros. Mauris quam nulla, gravida non, tincidunt pulvinar, malesuada sit amet, orci. Duis non leo ac sapien pharetra varius. Aenean mollis felis in orci. Fusce fringilla tincidunt magna. Vestibulum hendrerit dapibus velit. Aenean vitae nisi. Vestibulum non erat. Sed sed nisi et pede faucibus interdum. Mauris ultrices libero id massa. Maecenas ipsum. Pellentesque tristique neque sed lacus. Proin in justo.</p>
+<ul>
+  <li>Sign up for a sandbox account on this webpage.</li>
+  <li>Install Adhearsion</li>
+  <li>Create a new Adhearsion application</li>
+  <li>Enable the <kbd>sandbox</kbd> component with your new application</li>
+  <li>Configure it with the username and password you used for your sandbox account.</li>
+  <li>Start your application</li>
+  <li>Use phone software to call your_username@adhearsion.com (via SIP)</li>
+</ul>
+
+<p>Firstly, if you don't have an account yet, sign up for one with the form on this page. The rest of the instructions assume you already have an account.</p>
+
+<h2>Installing Ruby, RubyGems and Adhearsion</h2>
+
+<p>Installing Adhearsion is very simple on all platforms. The Ruby language has an official package manager named RubyGems which conveniently streamlines the installation of third-party software. Once you install Ruby and RubyGems, we'll use RubyGems to install Adhearsion. For instructions on how to do this, click the section for your operating system below.</p>
+
+<h3>Mac OS X Leopard</h3>
+
+<p>Since you use Leopard, you already have Ruby and RubyGems installed! All you have to do is install Adhearsion using the <kbd>gem</kbd> command:</p>
+
+<code>sudo gem install adhearsion</code>
+
+<p>This will automatically add the <kbd>ahn</kbd> command to your system, allowing you to create and start applications in the following step.</p>
+
+<p>Yep, that's it!</p>
+
+<h3>Mac OS X Tiger</h3>
+
+<p>We recommend installing Ruby and RubyGems together using MacPorts. MacPorts is a package manager for Mac OS X similar to the package managers that come with virtually every Linux distribution. Download MacPorts from <strong style="color: red"><big>HERE</big></strong> and follow the install instructions on the website.</p>
+
+<p>MacPorts installs the <kbd>port</kbd> command. Use this to install Ruby and RubyGems by doing...</p>
+
+<code>sudo port install ruby rb-rubygems</code>
+
+<p>Now, just install Adhearsion by doing</p>
+
+<code>sudo gem install adhearsion</code>
+
+<p>This will automatically add the <kbd>ahn</kbd> command to your system, allowing you to create and start applications in the following step.</p>
+
+<h3>Linux/BSD</h3>
+
+<p>If you're using a desktop environment with Linux, open its graphical package manager and search for "rubygems" and install it. If there are packages for 1.8 or 1.9, select 1.8. When you install RubyGems, it should automatically install the appropriate Ruby package if it wasn't already installed.</p>
+
+<p>If you don't have a graphical package management system (e.g. if you're using a headless server via SSH), use your system's package manager to install RubyGems and Ruby. On Ubuntu the command is <kbd style="color:red;">sudo apt-get install ruby</kbd>.
+
+<p>Now, we'll use the <kbd>gem</kbd> command to install Adhearsion:</p>
+
+<code>sudo gem install adhearsion</code>
+
+<p>This will automatically add the <kbd>ahn</kbd> command to your system, allowing you to create and start applications in the following step.</p>
+
+<h3>Microsoft Windows</h3>
+
+<p><em>Note: Adhearsion is a framework for simplifying the writing of software. For this reason it has no intrinsic graphical user interface and using Adhearsion experience will require some degree of comfort with the MS-DOS terminal.</em></p>
+
+<p>We recommend using the Ruby One-Click Installed, available from <a href="http://ruby-lang.com">the Ruby website</a>. This will automatically install Ruby and RubyGems.</p>
+
+<p>When you've installed Ruby and RubyGems, open your command prompt and use the newly-installed "gem" command to install Adhearsion:</p>
+
+<code>gem install adhearsion</code>
+
+<p>This will automatically add the <kbd>ahn</kbd> command to your system, allowing you to create and start applications in the following step.</p>
+
+<h2>Creating and running your first application</h2>
+
+<p>Test that you have Adhearsion installed by running the following command:</p>
+
+<code>ahn --help</code>
+
+<p>This should print out the usage of the <kbd>ahn</kbd> command. This <kbd>ahn</kbd> command is the main way you create and run applications with Adhearsion.</p>
+
+<h3>Creating an application</h3>
+
+<p>Use the <kbd>ahn</kbd> command to create a new application in any directory you wish.</p>
+
+<code>ahn create my_first_app</code>
+
+<p>You will see the program print out a list of files it just created in the <kbd>my_first_app</kbd> folder. Next, we need to enable the sandbox component so that your application can accept calls when you call in with a PC phone. To do this, enter the following commands:</p>
+
+<code>cd my_first_app
+ahn enable component sandbox</code>
+
+<p>Components are like plugins to an Adhearsion application. They extend your application with some unit of functionality that is unique only to the individual applications that have installed and enabled it. New Adhearsion applications come with a number of component enabled and disabled. You can view the pre-installed components by looking at the folders in the <kbd>components</kbd> directory. The <kbd>components/disabled</kbd> folder contains components which are presently disabled. You can disable the component later by doing</p>
+
+<code>ahn disable component sandbox</code>
+
+<p>or by moving the <kbd>components/sandbox</kbd> folder into the <kbd>components/disabled</kbd> folder.</p>
+
+<p>Now that the <kbd>sandbox</kbd> component is enabled, we need to configure it with your username and password. Doing this is very easy. Open the <kbd>components/sandbox/sandbox.yml</kbd> file in your favorite text editor. It will look like the following:</p>
+
+<code>username: user123
+password: pass123</code>
+
+<p>Replace <kbd>user123</kbd> and <kbd>pass123</kbd> with the username and password you gave the signup form on this page.</p>
+
+<p>Once you've done this, you're ready to start your application! Next, change back into the <kbd>my_first_app</kbd> directory and start it by doing</p>
+
+<code>ahn start .</code>
+
+<p>Where "." simply means the current directory. Alternatively, you can do</p>
+
+<code>ahn -</code>
+
+<p>which is a shortcut for starting the application in the current directory.</p>
+
+<p>You should see Adhearsion output text as it starts the application. You should see a message that says the sandbox's authentication was accepted.</p>
+
+<p>Next, open the <kbd>dialplan.rb</kbd> file in your favorite text editor. This file contains the logic that is executed when you call into it. You should see something like the following:</p>
+
+<code>adhearsion {
+  simon_game
+}</code>
+
+<p>The name <kbd>adhearsion</kbd> in this file defines a dialplan <i>context</i>. The code within the curly braces is the implementation of the context. The <kbd>simon_game</kbd> text is a dialplan command or <i>method</i>. Methods often have arguments but the parenthesis around the methods are not required.</p>
+
+<p>Add the following code to the bottom of your <kbd>dialplan.rb</kbd> file:</p>
+
+<code>sandbox {
+  play "hello-world"
+}</code>
+
+<p>We added a context named <kbd>sandbox</kbd> because this is where calls from into the sandbox will go. If you have other systems handled by this Adhearsion application, they can each go into their own respective Adhearsion context. In the sandbox context, you can also see the use of a dialplan method with arguments, in this case the string of text "hello-world" which corresponds to a sound filename on the sandbox server into which we'll now call.</p>
+
+<h2>Calling into your application.</h2>
+
+<p>You'll use Voice over IP (VoIP) to call into our sandbox and execute your application. We recommend you use the VoIP phone software (also known as a <i>softphone</i>) named Gizmo to call in, particularly because it is free, cross-platform, and gets through firewalls well. Go to <a href="http://gizmoproject.com">the Gizmo Project website</a> and download Gizmo for your platform. When prompted to sign up for a Gizmo account, go ahead and get one.</p>
+
+<p>You're almost done! When the Gizmo interface comes up, enter <i><kbd>your_username</kbd></i><kbd>@adhearsion.com</kbd> in the text field on the interface, replacing <i><kbd>your_username</kbd></i> with your sandbox account username. VoIP phone numbers are usually in the format of an email address &mdash; <i><kbd>your_username</kbd></i><kbd>@adhearsion.com</kbd> is your sandbox "phone number".</p>
+
+<p>Press the dial button on Gizmo. When it connects, you should see your Adhearsion application scroll as you hear a woman's voice say "Hello world!".</p>
+
+<p>That's it! Feel free to play around with your <kbd>dialplan.rb</kbd> file and add more code. The sandbox is here for you to play with at your heart's content. Here are a few ideas:</p>
+
+<ul>
+  <li>Try playing the Simon Game</li>
+</ul>
+
+<p>Enjoy!</p>
+
