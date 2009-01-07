@@ -1,6 +1,7 @@
 class PageController < ApplicationController
   
   def index
+    @title = "Open-Source Telephony Development Framework"
     @blog_posts = BlogPost.find :all
   end
   
