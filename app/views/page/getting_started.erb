@@ -13,7 +13,7 @@
   <li>Enable the <kbd>sandbox</kbd> component with your new application</li>
   <li>Configure it with the username and password you used for your sandbox account</li>
   <li>Start your application</li>
-  <li>Use Voice over IP software to call <kbd>your_username@adhearsion.com</kbd></li>
+  <li>Use Voice over IP software to call your unique VoIP extension</li>
 </ul>
 
 <p>Firstly, if you don't have an account yet, sign up for one with the form on this page. The rest of the instructions assume you already have an account.</p>
@@ -22,35 +22,35 @@
 
 <p>Installing Adhearsion is very simple on all platforms. The Ruby language has an official package manager named RubyGems which conveniently streamlines the installation of third-party software. Once you install Ruby and RubyGems, we'll use RubyGems to install Adhearsion. For instructions on how to do this, click the section for your operating system below. For more ways to install Adhearsion (including how to get the latest-and-greatest code) see the <a href="/download">Download page</a>.</p>
 
-<h3><a href="#" onclick="javascript:$('#leopard-installation').toggle();">Mac OS X Leopard</a></h3>
+<h3 class="installation-instruction-toggler"><a href="#" onclick="javascript:$('#leopard-installation').slideToggle();; return false;">Mac OS X Leopard</a></h3>
 
 <div id="leopard-installation" class="installation-instructions">
   <p>Since you use Leopard, you already have Ruby and RubyGems installed! All you have to do is install Adhearsion using the <kbd>gem</kbd> command:</p>
 
-  <code>sudo gem install adhearsion</code>
+  <pre>sudo gem install adhearsion</pre>
 
   <p>This will automatically add the <kbd>ahn</kbd> command to your system, allowing you to create and start applications in the following step.</p>
 
   <p>Yep, that's it!</p>
 </div>
 
-<h3><a href="#" onclick="javascript:$('#tiger-installation').toggle();">Mac OS X Tiger</a></h3>
+<h3 class="installation-instruction-toggler"><a href="#" onclick="javascript:$('#tiger-installation').slideToggle(); return false;">Mac OS X Tiger</a></h3>
 <div id="tiger-installation" class="installation-instructions">
   <p>We recommend installing Ruby and RubyGems together using MacPorts. MacPorts is a package manager for Mac OS X similar to the package managers that come with virtually every Linux distribution. Download MacPorts from <strong style="color: red"><big>HERE</big></strong> and follow the install instructions on the website.</p>
 
   <p>MacPorts installs the <kbd>port</kbd> command. Use this to install Ruby and RubyGems by doing...</p>
 
-  <code>sudo port install ruby rb-rubygems</code>
+  <pre>sudo port install ruby rb-rubygems</pre>
 
   <p>Now, just install Adhearsion by doing</p>
 
-  <code>sudo gem install adhearsion</code>
+  <pre>sudo gem install adhearsion</pre>
 
   <p>This will automatically add the <kbd>ahn</kbd> command to your system, allowing you to create and start applications in the following step.</p>
 
 </div>
 
-<h3><a href="#" onclick="javascript:$('#linux-installation').toggle();">Linux/BSD</a></h3>
+<h3 class="installation-instruction-toggler"><a href="#" onclick="javascript:$('#linux-installation').slideToggle();; return false;">Linux/BSD</a></h3>
 
 <div id="linux-installation" class="installation-instructions">
   <p>If you're using a desktop environment with Linux, open its graphical package manager and search for "rubygems" and install it. If there are packages for 1.8 or 1.9, select 1.8. When you install RubyGems, it should automatically install the appropriate Ruby package if it wasn't already installed.</p>
@@ -59,13 +59,13 @@
 
   <p>Now, we'll use the <kbd>gem</kbd> command to install Adhearsion:</p>
 
-  <code>sudo gem install adhearsion</code>
+  <pre>sudo gem install adhearsion</pre>
 
   <p>This will automatically add the <kbd>ahn</kbd> command to your system, allowing you to create and start applications in the following step.</p>
   
 </div>
 
-<h3><a href="#" onclick="javascript:$('#windows-installation').toggle();">Microsoft Windows</a></h3></h3>
+<h3 class="installation-instruction-toggler"><a href="#" onclick="javascript:$('#windows-installation').slideToggle();; return false;">Microsoft Windows</a></h3></h3>
 
 <div id="windows-installation" class="installation-instructions">
 
@@ -77,7 +77,7 @@
 
   <p>When you've installed Ruby and RubyGems, open your command prompt and use the newly-installed "gem" command to install Adhearsion:</p>
 
-  <code>gem install adhearsion</code>
+  <pre>gem install adhearsion</pre>
 
   <p>This will automatically add the <kbd>ahn</kbd> command to your system, allowing you to create and start applications in the following step.</p>
   
@@ -87,7 +87,7 @@
 
 <p>Test that you have Adhearsion installed by running the following command:</p>
 
-<code>ahn --help</code>
+<pre>ahn --help</pre>
 
 <p>This should print out the usage of the <kbd>ahn</kbd> command. This <kbd>ahn</kbd> command is the main way you create and run applications with Adhearsion.</p>
 
@@ -95,7 +95,7 @@
 
 <p>Use the <kbd>ahn</kbd> command to create a new application in any directory you wish.</p>
 
-<code>ahn create my_first_app</code>
+<pre>ahn create my_first_app</pre>
 
 <p>You will see the program print out a list of files it just created in the <kbd>my_first_app</kbd> folder.</p>
 
@@ -108,7 +108,7 @@ ahn enable component sandbox</pre>
 
 <p>Components are like plugins to an Adhearsion application. They extend your application with some unit of functionality that is unique only to the individual applications that have installed and enabled it. New Adhearsion applications come with a number of component enabled and disabled. You can view the pre-installed components by looking at the folders in the <kbd>components</kbd> directory. The <kbd>components/disabled</kbd> folder contains components which are presently disabled. You can disable the component later by doing</p>
 
-<code>ahn disable component sandbox</code>
+<pre>ahn disable component sandbox</pre>
 
 <p>or by moving the <kbd>components/sandbox</kbd> folder into the <kbd>components/disabled</kbd> folder.</p>
 
@@ -123,11 +123,11 @@ password: pass123</pre>
 
 <p>Once you've done this, you're ready to start your application! Next, change back into the <kbd>my_first_app</kbd> directory and start it by doing</p>
 
-<code>ahn start .</code>
+<pre>ahn start .</pre>
 
 <p>Where "." simply means the current directory. Alternatively, you can do</p>
 
-<code>ahn -</code>
+<pre>ahn -</pre>
 
 <p>which is a shortcut for starting the application in the current directory.</p>
 
@@ -151,9 +151,13 @@ password: pass123</pre>
 
 <h2>Calling into your application.</h2>
 
-<p>You'll use Voice over IP (VoIP) to call into our sandbox and execute your application. We recommend you use the VoIP phone software (also known as a <i>softphone</i>) named Gizmo to call in, particularly because it is free, cross-platform, and gets through firewalls well. Go to <a href="http://gizmoproject.com">the Gizmo Project website</a> and download Gizmo for your platform. When prompted to sign up for a Gizmo account, go ahead and get one.</p>
+<p>Lastly, we'll use Voice over IP (VoIP) software to call into our sandbox and execute your application.</p>
 
-<p>You're almost done! When the Gizmo interface comes up, enter <i><kbd>your_username</kbd></i><kbd>@adhearsion.com</kbd> in the text field on the interface, replacing <i><kbd>your_username</kbd></i> with your sandbox account username. VoIP phone numbers are usually in the format of an email address &mdash; <i><kbd>your_username</kbd></i><kbd>@adhearsion.com</kbd> is your sandbox "phone number".</p>
+<img style="margin: -25px;float:right;" src="/images/gizmo-uri-field.png" alt=""/>
+  
+<p>We recommend you use the VoIP phone software (also known as a <i>softphone</i>) named Gizmo to call in, particularly because it is free, cross-platform, and gets through firewalls well. Go to <a href="http://gizmoproject.com">the Gizmo Project website</a> and download Gizmo for your platform. When prompted to sign up for a Gizmo account, go ahead and get one.</p>
+
+<p>You're almost done! When the Gizmo interface comes up, enter <i><kbd>xyz</kbd></i><kbd>@adhearsion.com</kbd> in the text field on the interface, replacing <i><kbd>xyz</kbd></i> with your sandbox account username. VoIP phone system extensions are usually in the format of an email address.</p>
 
 <p>Press the dial button on Gizmo. When it connects, you should see your Adhearsion application scroll as you hear a woman's voice say "Hello world!".</p>
 
