@@ -88,8 +88,7 @@ pre, kbd {
 }
 
 pre {
-  
-  font-size: 13px;
+  font-size: 12px;
   border: 1px dotted #ddd;
   background-color: #eee;
   padding: 4px 4px 4px 10px;
@@ -228,4 +227,24 @@ pre {
 
 #sandbox-registration .bad-input {
   background-color: red;
+}
+
+
+h3.installation-instruction-toggler a {
+	display: block;
+	background-color: #eee;
+	padding: 6px;
+	border-left: 4px solid #eaeaea;
+}
+
+div.installation-instructions {
+	display: none;
+	padding: 10px 10px 0 10px;
+	border-left: 4px #eaeaea solid;
+}
+
+h3.installation-instruction-toggler a:hover {
+	background-color: #eaeaea;
+	color: black;
+	border-left: 4px solid black;
 }
