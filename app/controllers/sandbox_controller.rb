@@ -7,6 +7,11 @@ class SandboxController < ApplicationController
     end
     user = SandboxUser.new params["sandbox_user"]
     if user.save
+      if params["join_mailing_list"] == "1"
+        escaped_email = URI.escape user.email
+        open("http://groups.google.com/group/adhearsion/boxsubscribe?p=ConfirmExplanation&amp;email=#{escaped_email}&amp;_referer").read
+      end 
+      SandboxMailer.deliver_signup_notification(user)
       render :text => user.to_json, :content_type => "text/x-json"
     else
       render :text => errors_to_json(user.errors), :status => 500, :content_type => "text/x-json"

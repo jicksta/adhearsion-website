@@ -75,3 +75,4 @@ Rails::Initializer.run do |config|
 end
 
 require 'md5'
+require 'open-uri'

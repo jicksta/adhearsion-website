@@ -5151,3 +5151,123 @@ Completed in 9ms (View: 0, DB: 0) | 200 OK [http://localhost/sandbox/register_us
   [4;36;1mSandboxUser Destroy (0.2ms)[0m   [0;1mDELETE FROM "sandbox_users" WHERE "id" = 31[0m
   [4;35;1mSandboxUser Destroy (0.2ms)[0m   [0mDELETE FROM "sandbox_users" WHERE "id" = 32[0m
   [4;36;1mSandboxUser Destroy (0.2ms)[0m   [0;1mDELETE FROM "sandbox_users" WHERE "id" = 33[0m
+
+
+Processing PageController#index (for 67.180.103.93 at 2009-01-06 17:42:16) [GET]
+  [4;36;1mBlogPost Load (1.9ms)[0m   [0;1mSELECT * FROM "blog_posts" [0m
+Rendering template within layouts/page
+Rendering page/index
+Completed in 82ms (View: 69, DB: 2) | 200 OK [http://new.adhearsion.com/]
+
+
+Processing PageController#getting_started (for 67.180.103.93 at 2009-01-06 17:42:21) [GET]
+Rendering template within layouts/page
+Rendering page/getting_started
+Rendered page/_sandbox_registration (8.9ms)
+Completed in 56ms (View: 42, DB: 0) | 200 OK [http://new.adhearsion.com/getting_started]
+
+
+Processing SandboxController#register_user (for 67.180.103.93 at 2009-01-06 17:42:57) [POST]
+  Parameters: {"authenticity_token"=>"605a6ea29708460dcdd69848e98a7d69de7d54d7", "confirm_password"=>"foobar", "sandbox_user"=>{"name"=>"foobar", "username"=>"foo", "password"=>"foobar", "email"=>"jsgoecke@yahoo.com"}}
+  [4;35;1mSandboxUser Exists (0.5ms)[0m   [0mSELECT "sandbox_users".id FROM "sandbox_users" WHERE ("sandbox_users"."username" = 'foo') LIMIT 1[0m
+Completed in 28ms (View: 0, DB: 1) | 500 Internal Server Error [http://new.adhearsion.com/sandbox/register_user]
+
+
+Processing SandboxController#register_user (for 67.180.103.93 at 2009-01-06 17:43:02) [POST]
+  Parameters: {"authenticity_token"=>"605a6ea29708460dcdd69848e98a7d69de7d54d7", "confirm_password"=>"foobar", "sandbox_user"=>{"name"=>"foobar", "username"=>"foobar", "password"=>"foobar", "email"=>"jsgoecke@yahoo.com"}}
+  [4;36;1mSandboxUser Exists (0.4ms)[0m   [0;1mSELECT "sandbox_users".id FROM "sandbox_users" WHERE ("sandbox_users"."username" = 'foobar') LIMIT 1[0m
+  [4;35;1mSandboxUser Create (1.1ms)[0m   [0mINSERT INTO "sandbox_users" ("name", "receive_emails", "updated_at", "identifier_hash", "username", "password_hash", "email", "created_at") VALUES('foobar', NULL, '2009-01-06 23:43:02', 'cc60b9b8bc16221002f45bc9b2db9109', 'foobar', '3858f62230ac3c915f300c664312c63f', 'jsgoecke@yahoo.com', '2009-01-06 23:43:02')[0m
+Completed in 33ms (View: 0, DB: 2) | 200 OK [http://new.adhearsion.com/sandbox/register_user]
+
+
+Processing PageController#getting_started (for 67.180.103.93 at 2009-01-06 17:43:27) [GET]
+Rendering template within layouts/page
+Rendering page/getting_started
+Rendered page/_sandbox_registration (8.0ms)
+Completed in 54ms (View: 40, DB: 0) | 200 OK [http://new.adhearsion.com/getting_started]
+
+
+Processing SandboxController#register_user (for 67.180.103.93 at 2009-01-06 17:43:47) [POST]
+  Parameters: {"join_mailing_list"=>"1", "authenticity_token"=>"605a6ea29708460dcdd69848e98a7d69de7d54d7", "confirm_password"=>"foobar", "sandbox_user"=>{"name"=>"foobar", "username"=>"foobar2", "password"=>"foobar", "email"=>"jsgoecke@yahoo.com"}}
+  [4;36;1mSandboxUser Exists (0.5ms)[0m   [0;1mSELECT "sandbox_users".id FROM "sandbox_users" WHERE ("sandbox_users"."username" = 'foobar2') LIMIT 1[0m
+  [4;35;1mSandboxUser Create (0.7ms)[0m   [0mINSERT INTO "sandbox_users" ("name", "receive_emails", "updated_at", "identifier_hash", "username", "password_hash", "email", "created_at") VALUES('foobar', NULL, '2009-01-06 23:43:47', 'de6087910a63137f6a225d479e299420', 'foobar2', '3858f62230ac3c915f300c664312c63f', 'jsgoecke@yahoo.com', '2009-01-06 23:43:47')[0m
+
+
+Errno::ENOENT (No such file or directory - http://groups.google.com/group/adhearsion/boxsubscribe?p=ConfirmExplanation&amp;email=jsgoecke@yahoo.com&amp;_referer):
+    /app/controllers/sandbox_controller.rb:12:in `initialize'
+    /app/controllers/sandbox_controller.rb:12:in `open'
+    /app/controllers/sandbox_controller.rb:12:in `register_user'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `perform_action_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:76:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/servers/mongrel.rb:64
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/server.rb:49
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    ./script/server:3
+
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_trace (88.5ms)
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_request_and_response (2.5ms)
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing SandboxController#register_user (for 67.180.103.93 at 2009-01-06 17:43:53) [POST]
+  Parameters: {"join_mailing_list"=>"1", "authenticity_token"=>"605a6ea29708460dcdd69848e98a7d69de7d54d7", "confirm_password"=>"foobar", "sandbox_user"=>{"name"=>"foobar", "username"=>"foobar2", "password"=>"foobar", "email"=>"jsgoecke@yahoo.com"}}
+  [4;36;1mSandboxUser Exists (0.7ms)[0m   [0;1mSELECT "sandbox_users".id FROM "sandbox_users" WHERE ("sandbox_users"."username" = 'foobar2') LIMIT 1[0m
+Completed in 28ms (View: 0, DB: 1) | 500 Internal Server Error [http://new.adhearsion.com/sandbox/register_user]
+
+
+Processing SandboxController#register_user (for 67.180.103.93 at 2009-01-06 17:44:53) [POST]
+  Parameters: {"join_mailing_list"=>"1", "authenticity_token"=>"605a6ea29708460dcdd69848e98a7d69de7d54d7", "confirm_password"=>"foobar", "sandbox_user"=>{"name"=>"foobar", "username"=>"foobar3", "password"=>"foobar", "email"=>"jsgoecke@yahoo.com"}}
+  [4;36;1mSandboxUser Exists (0.6ms)[0m   [0;1mSELECT "sandbox_users".id FROM "sandbox_users" WHERE ("sandbox_users"."username" = 'foobar3') LIMIT 1[0m
+  [4;35;1mSandboxUser Create (1.1ms)[0m   [0mINSERT INTO "sandbox_users" ("name", "receive_emails", "updated_at", "identifier_hash", "username", "password_hash", "email", "created_at") VALUES('foobar', NULL, '2009-01-06 23:44:53', '2e9e312d3bc0b17429268496ffec59ee', 'foobar3', '3858f62230ac3c915f300c664312c63f', 'jsgoecke@yahoo.com', '2009-01-06 23:44:53')[0m
+Completed in 858ms (View: 0, DB: 2) | 200 OK [http://new.adhearsion.com/sandbox/register_user]
