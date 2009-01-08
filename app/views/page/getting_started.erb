@@ -1,6 +1,6 @@
 <h1>Getting Started</h1>
 
-<p>Because Adhearsion is a framework for writing telephony applications, it depends on a bit of lower-level plumbing to get an application running. We want to everyone to easily give Adhearsion a try so we've set up a <strong>totally free</strong> sandbox telephony system which allows you to use Adhearsion without setting up Asterisk. You won't be able to dial out to landline and cell phones but you will be able to get a good idea of what Adhearsion is and how it works.</p>
+<p>Because Adhearsion is a framework for writing telephony applications, it depends on a bit of lower-level plumbing to get an application running. We want everyone to easily give Adhearsion a try so we've set up a <strong>completely free</strong> sandbox telephony system which allows you to use Adhearsion without setting up Asterisk. You won't be able to dial out to landline and cell phones but you will be able to get a good idea of what Adhearsion is and how it works.</p>
 
 <%= render :partial => "sandbox_registration" %>
 
@@ -13,7 +13,7 @@
   <li>Enable the <kbd>sandbox</kbd> component with your new application</li>
   <li>Configure it with the username and password you used for your sandbox account</li>
   <li>Start your application</li>
-  <li>Use Voice over IP software to call your unique VoIP extension</li>
+  <li>Use a Voice over IP softphone to call your unique VoIP extension</li>
 </ul>
 
 <p>Firstly, if you don't have an account yet, sign up for one with the form on this page. The rest of the instructions assume you already have an account.</p>
@@ -36,7 +36,7 @@
 
 <h3 class="installation-instruction-toggler"><a href="#" onclick="javascript:$('#tiger-installation').slideToggle(); return false;">Mac OS X Tiger</a></h3>
 <div id="tiger-installation" class="installation-instructions">
-  <p>We recommend installing Ruby and RubyGems together using MacPorts. MacPorts is a package manager for Mac OS X similar to the package managers that come with virtually every Linux distribution. Download MacPorts from <strong style="color: red"><big>HERE</big></strong> and follow the install instructions on the website.</p>
+  <p>We recommend installing Ruby and RubyGems together using MacPorts. MacPorts is a package manager for Mac OS X similar to the package managers that come with virtually every Linux distribution. Download MacPorts from <a href="http://www.macports.org/">HERE</a> and follow the install instructions on the website.</p>
 
   <p>MacPorts installs the <kbd>port</kbd> command. Use this to install Ruby and RubyGems by doing...</p>
 
@@ -55,7 +55,7 @@
 <div id="linux-installation" class="installation-instructions">
   <p>If you're using a desktop environment with Linux, open its graphical package manager and search for "rubygems" and install it. If there are packages for 1.8 or 1.9, select 1.8. When you install RubyGems, it should automatically install the appropriate Ruby package if it wasn't already installed.</p>
 
-  <p>If you don't have a graphical package management system (e.g. if you're using a headless server via SSH), use your system's package manager to install RubyGems and Ruby. On Ubuntu the command is <kbd style="color:red;">sudo apt-get install ruby</kbd>.</p>
+  <p>If you don't have a graphical package management system (e.g. if you're using a headless server via SSH), use your system's package manager to install RubyGems and Ruby. On Ubuntu the command is <kbd style="color:red;">sudo apt-get install ruby</kbd> and on RHEL/Fedora/CentOS the command is <kbd style="color:red;">sudo yum install ruby</kbd>.</p>
 
   <p>Now, we'll use the <kbd>gem</kbd> command to install Adhearsion:</p>
 
@@ -108,7 +108,7 @@
 <pre>cd my_first_app
 ahn enable component sandbox</pre>
 
-<p>Components are like plugins to an Adhearsion application. They extend your application with some unit of functionality that is unique only to the individual applications that have installed and enabled it. New Adhearsion applications come with a number of component enabled and disabled. You can view the pre-installed components by looking at the folders in the <kbd>components</kbd> directory. The <kbd>components/disabled</kbd> folder contains components which are presently disabled. You can disable the component later by doing</p>
+<p>Components are like plugins to an Adhearsion application. They extend your application with some unit of functionality that is unique only to the individual applications that have installed and enabled it. New Adhearsion applications come with a number of components enabled and disabled. You can view the pre-installed components by looking at the folders in the <kbd>components</kbd> directory. The <kbd>components/disabled</kbd> folder contains components which are presently disabled. You can disable the component later by doing</p>
 
 <pre>ahn disable component sandbox</pre>
 
@@ -143,7 +143,7 @@ password: pass123</pre>
 
 <p>The name <kbd>adhearsion</kbd> in this file defines a dialplan <i>context</i>. The code within the curly braces is the implementation of the context. The <kbd>simon_game</kbd> text is a dialplan command or <i>method</i>. Methods often have arguments but the parenthesis around the methods are not required.</p>
 
-<p>Add the following code to the bottom of your <kbd>dialplan.rb</kbd> file:</p>
+<p>We are now going to create a new context, add the following code to the bottom of your <kbd>dialplan.rb</kbd> file:</p>
 
 <pre>sandbox {
   play "hello-world"
@@ -157,11 +157,9 @@ password: pass123</pre>
 
 <img style="margin: -25px;float:right;" src="/images/gizmo-uri-field.png" alt=""/>
   
-<p>We recommend you use the free Gizmo Project softphone to place calls into the sandbox. These are the considerations when choosing a phone:</p>
+<p>We recommend you use the free Gizmo5 softphone to place calls into the sandbox. Gizmo5 is a free, cross-platform, and gets through firewalls well. Go to <a href="http://gizmoproject.com">the Gizmo5 website</a> and download Gizmo5 for your platform. When prompted to sign up for a Gizmo5 account, go ahead and get one.</p>
 
-<p>t's is free, cross-platform, and gets through firewalls well. Go to <a href="http://gizmoproject.com">the Gizmo Project website</a> and download Gizmo for your platform. When prompted to sign up for a Gizmo account, go ahead and get one.</p>
-
-<p>You're almost done! When the Gizmo interface comes up, enter <i><kbd>xyz</kbd></i><kbd>@adhearsion.com</kbd> in the text field on the interface, replacing <i><kbd>xyz</kbd></i> with your sandbox account username. VoIP phone system extensions are usually in the format of an email address.</p>
+<p>You're almost done! When the Gizmo interface comes up, enter <i><kbd>xyz</kbd></i><kbd>@adhearsion.com</kbd> in the text field on the interface, replacing <i><kbd>xyz</kbd></i> with your sandbox account username. VoIP phone system extensions may be in the format of an email address.</p>
 
 <p>Press the dial button on Gizmo. When it connects, you should see your Adhearsion application scroll as you hear a woman's voice say "Hello world!".</p>
 
