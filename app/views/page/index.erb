@@ -1,7 +1,7 @@
 <% for post in @blog_posts %>
 <div class="blog_post">
-  <h1><%= post.title %></h1>
-  <p class="meta"><%= post.created_at.strftime("%B %d, %Y") %></p>
-  <%= post.body %>
+  <h1><%= post[:title] %></h1>
+  <p class="meta"><%= post[:date].strftime("%B %d, %Y") %></p>
+  <%= post[:content] %>
 </div>
 <% end %>

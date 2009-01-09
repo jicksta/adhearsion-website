@@ -2,7 +2,7 @@ class PageController < ApplicationController
   
   def index
     @title = "Open-Source Telephony Development Framework"
-    @blog_posts = BlogPost.find :all
+    @blog_posts = load_blog_posts_from_wiki
   end
   
   def getting_started
@@ -53,5 +53,5 @@ class PageController < ApplicationController
   def screencasts
     @title = "Screencasts"
   end
-  
+
 end

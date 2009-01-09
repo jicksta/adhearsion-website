@@ -1,0 +1,4 @@
+# This file should be moved to config/confluence.yml with proper data entered below.
+username: api123
+password: api123
+host: http://docs.adhearsion.com
