@@ -20,9 +20,14 @@
 
 <h2>Installing Ruby, RubyGems and Adhearsion</h2>
 
-<p>Installing Adhearsion is very simple on all platforms. The Ruby language has an official package manager named RubyGems which conveniently streamlines the installation of third-party software. Once you install Ruby and RubyGems, we'll use RubyGems to install Adhearsion. For instructions on how to do this, click the section for your operating system below. 
+<p>Installing Adhearsion is very simple on all platforms. The Ruby language has an official package manager named RubyGems which conveniently streamlines the installation of third-party software. Once you install Ruby and RubyGems, we'll use RubyGems to install Adhearsion.</p>
 
-<h3 class="installation-instruction-toggler"><a href="#" onclick="javascript:$('#leopard-installation').slideToggle(); return false;">Mac OS X Leopard</a></h3>
+<p>Choose one of the operating systems below for installation instructions.</p>
+
+
+<div id="installation-accordion">
+
+<h3 class="installation-instruction-toggler">Mac OS X Leopard</h3>
 
 <div id="leopard-installation" class="installation-instructions">
   <p>Since you use Leopard, you already have Ruby and RubyGems installed! All you have to do is install Adhearsion using the <kbd>gem</kbd> command:</p>
@@ -34,7 +39,8 @@
   <p>Yep, that's it!</p>
 </div>
 
-<h3 class="installation-instruction-toggler"><a href="#" onclick="javascript:$('#tiger-installation').slideToggle(); return false;">Mac OS X Tiger</a></h3>
+<h3 class="installation-instruction-toggler">Mac OS X Tiger</h3>
+
 <div id="tiger-installation" class="installation-instructions">
   <p>We recommend installing Ruby and RubyGems together using MacPorts. MacPorts is a package manager for Mac OS X similar to the package managers that come with virtually every Linux distribution. Download MacPorts from <a href="http://www.macports.org/">HERE</a> and follow the install instructions on the website.</p>
 
@@ -50,13 +56,27 @@
 
 </div>
 
-<h3 class="installation-instruction-toggler"><a href="#" onclick="javascript:$('#linux-installation').slideToggle();; return false;">Linux/BSD</a></h3>
+<h3 class="installation-instruction-toggler">Linux/BSD</h3>
 
 <div id="linux-installation" class="installation-instructions">
-  <p>If you're using a desktop environment with Linux, open its graphical package manager and search for "rubygems" and install it. If there are packages for 1.8 or 1.9, select 1.8. When you install RubyGems, it should automatically install the appropriate Ruby package if it wasn't already installed.</p>
+  
+  <p>On Linux it's best to use your distro's package manager to install Ruby and RubyGems, then have RubyGems update itself.</p>
 
-  <p>If you don't have a graphical package management system (e.g. if you're using a headless server via SSH), use your system's package manager to install RubyGems and Ruby. On Ubuntu the command is <kbd style="color:red;">sudo apt-get install ruby</kbd> and on RHEL/Fedora/CentOS the command is <kbd style="color:red;">sudo yum install ruby</kbd>.</p>
+  <p>On Debian and Ubuntu you may install Ruby and RubyGems by doing</p>
+  
+<pre>sudo apt-get install -y ruby1.8-dev rubygems1.8 \
+  irb1.8 libsqlite3-ruby1.8</pre>
+  
+  <p>On the Red Hat variants such as RHEL, Fedora, and CentOS, run the following command:</p>
+  <pre>sudo yum install -y ruby ruby-rdoc ruby-irb \
+  ruby-sqlite3 </pre>
+  
+  <h4>Updating RubyGems</h4>
+  
+  <p>Before we install any gems with RubyGems, let's make sure we're using the latest version. Upgrade RubyGems by running the following command.</p>
 
+  <pre>sudo gem update --system</pre>
+  
   <p>Now, we'll use the <kbd>gem</kbd> command to install Adhearsion:</p>
 
   <pre>sudo gem install adhearsion</pre>
@@ -65,7 +85,7 @@
   
 </div>
 
-<h3 class="installation-instruction-toggler"><a href="#" onclick="javascript:$('#windows-installation').slideToggle();; return false;">Microsoft Windows</a></h3></h3>
+<h3 class="installation-instruction-toggler">Microsoft Windows</h3></h3>
 
 <div id="windows-installation" class="installation-instructions">
 
@@ -82,6 +102,18 @@
   <p>This will automatically add the <kbd>ahn</kbd> command to your system, allowing you to create and start applications in the following step.</p>
   
 </div>
+
+</div>
+
+<script type="text/javascript">
+$("#installation-accordion").accordion({
+  alwaysOpen: false,
+  header: "h3",
+  active: true,
+  autoHeight: false
+});
+// $("#installation-accordion").accordion("activate", false);
+</script>
 
 <p>For more ways to install Adhearsion (including how to get the latest-and-greatest code) see the <a href="/download">Download page</a>.</p>
 
@@ -153,7 +185,7 @@ password: pass123</pre>
 
 <h2>Calling into your application.</h2>
 
-<p>Lastly, we'll use Voice over IP (VoIP) phone software (commonly called "softphone" in telephony jargon) to call into our sandbox and execute your application.</p>
+<p>Lastly, we'll use Voice over IP (VoIP) phone software (commonly called a "softphone" in telephony jargon) to call into our sandbox and execute your application.</p>
 
 <img style="margin: -25px;float:right;" src="/images/gizmo-uri-field.png" alt=""/>
   
@@ -164,6 +196,14 @@ password: pass123</pre>
 <p>Press the dial button on Gizmo. When it connects, you should see your Adhearsion application scroll as you hear a woman's voice say "Hello world!".</p>
 
 <p>That's it! Feel free to play around with your <kbd>dialplan.rb</kbd> file and add more code. The sandbox is here for you to play with to your heart's content.</p>
+
+<h2>What you haven't seen yet.</h2>
+
+<p>You just created your first Adhearsion dialplan but there's <strong>much more</strong> to Adhearsion!</p>
+
+<h3>Starting calls</h3>
+
+
 
 <h2>Additional Resources</h2>
 

@@ -76,7 +76,7 @@ h1,h2,h3 {color: #5fc6e9;}
 
 /* structure */
 .container {
-	font-size: 1.2em;
+	font-size: 1.3em;
 	background: url(/images/bgcontainer.gif) repeat-y;
 	margin: 0 auto;
 	width: 840px;
@@ -230,7 +230,7 @@ pre {
 }
 
 
-h3.installation-instruction-toggler a {
+h3.installation-instruction-toggler {
 	display: block;
 	background-color: #eee;
 	padding: 6px;
@@ -243,8 +243,13 @@ div.installation-instructions {
 	border-left: 4px #eaeaea solid;
 }
 
-h3.installation-instruction-toggler a:hover {
+h3.installation-instruction-toggler:hover {
 	background-color: #eaeaea;
 	color: black;
 	border-left: 4px solid black;
+}
+
+#feed-icon {
+  float: right;
+  margin-right: -10px;
 }
