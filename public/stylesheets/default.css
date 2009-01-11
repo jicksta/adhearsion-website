@@ -26,12 +26,18 @@ body {
 }
 
 p,ul {
-	padding-bottom: 1em;
+	padding-bottom: 14px;
 }
 
 ul {margin-left: 1.2em;}
 
-li {list-style: none;}
+li {
+  list-style: none;
+}
+
+div.padded li {
+  padding: 3px 0;
+}
 .main li {list-style-image: url(/images/li.gif);}
 
 .main_right h1 {font-size: 1.2em;}
