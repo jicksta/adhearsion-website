@@ -4,7 +4,7 @@
 
 <h2>Playing a sound file</h2>
 
-<p>When using Adhearsion with Asterisk, you have <em>thousands</em> of sound files to use right out of the box. These range from the useful everyday sound files to pure novelties such as monkeys screaming and practical jokes.</p>
+<p>When using Adhearsion with Asterisk, you have <em><a href="http://www.voip-info.org/wiki/view/Asterisk+sound+files" target="_blank">hundreds</a></em> of sound files to use right out of the box. These range from the useful everyday sound files to pure novelties such as monkeys screaming (tt-monkeys) and practical jokes. The dialplan method that may used is <em><a href="http://api.adhearsion.com/Adhearsion/VoIP/Asterisk/Commands.html#play-instance_method">play</a></em> as follows</p>
 
 <pre>
   play "hello-world"
@@ -17,7 +17,7 @@
 
 <pre>desired_extension = input</pre>
 
-<p>The example above shows a Ruby principle at work: <strong>convention over configuration</strong>. All of <kbd>input</kbd>'s parameters are optional. The code above simply receives any number of digits with no timeout until the user presses <kbd>#</kbd>. The result is then bound to the <kbd>desired_extension</kbd> variable with the delimiting "#" removed.</p>
+<p>The example above shows a Ruby principle at work: <strong>convention over configuration</strong>. All of <kbd><a href="http://api.adhearsion.com/Adhearsion/VoIP/Asterisk/Commands.html#input-instance_method" target="_blank">input</a></kbd>'s parameters are optional. The code above simply receives any number of digits with no timeout until the user presses <kbd>#</kbd>. The result is then bound to the <kbd>desired_extension</kbd> variable with the delimiting "#" removed.</p>
 
 <p>Or you can explicitly receive a number of digits with a timeout.</p>
   
@@ -27,7 +27,7 @@
 
 <h2>Conferencing</h2>
 
-<p>Want to the user to join a conference bridge? Easy.</p>
+<p>Want the user to join a conference bridge? Easy, use the <a href="http://api.adhearsion.com/Adhearsion/VoIP/Asterisk/Commands.html#join-instance_method" target="_blank">join</a> method.</p>
 
 <pre>join "sales"</pre>
 
@@ -53,7 +53,7 @@ unknown {
 
 <h2>Simple menus</h2>
 
-<p>The <kbd>menu</kbd> command lets you construct menus which cleanly </p>
+<p>The <kbd><a href="http://api.adhearsion.com/Adhearsion/VoIP/Asterisk/Commands.html#menu-instance_method" target="_blank">menu</a></kbd> command lets you construct menus which cleanly </p>
 
 <pre>
 menu "welcome", "main_prompt" do |link|
@@ -67,7 +67,7 @@ end
 
 <h2>Robust menus</h2>
 
-<p>The <kbd>menu</kbd> command lets you construct menus which cleanly </p>
+<p>The <kbd><a href="http://api.adhearsion.com/Adhearsion/VoIP/Asterisk/Commands.html#menu-instance_method" target="_blank">menu</a></kbd> command lets you construct menus which cleanly </p>
 
 <pre>
 menu "prompt", :timeout => 5, :tries => 3 do |link|
@@ -96,7 +96,7 @@ end
 
 <h2>First-class Queues</h2>
 
-<p>When using Adhearsion with Asterisk, you have <em>thousands</em> of sound files to use right out of the box. These range from the useful everyday sound files to pure novelties such as monkeys screaming and practical jokes.</p>
+<p>You may use the built-in Asterisk queues with the <a href="http://api.adhearsion.com/Adhearsion/VoIP/Asterisk/Commands.html#queue-instance_method" target="_blank">queue</a> method.</p>
 
 <pre>
 sales = queue "sales"
@@ -109,4 +109,4 @@ end
 
 <p>Most Adhearsion applications use Ruby on Rails' <a href="http://en.wikipedia.org/wiki/Object-relational_mapping" title="Object-Relational Mapper">ORM</a>. If you're already familiar with Ruby, you've probably already used it.</p>
 
-<p>If you haven't heard of ActiveRecord before, then this section is for you. ActiveRecord is a library for connecting to virtually any Relational Database Management System, such as MySQL, PostgreSQL, Microsoft SQL Server, sqlite3, etc.</p>
+<p>You may find all of the documentation on how to use a database in your Adhearsion application on the Adhearsion Wiki <a href="http://docs.adhearsion.com/display/adhearsion/ActiveRecord" target="_blank">here</a>.</p>
