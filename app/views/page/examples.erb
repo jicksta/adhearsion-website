@@ -13,13 +13,25 @@
 
 <h2>Receiving input</h2>
 
-<p>Taking input via phone keypad input is extremely simple. When calling <kbd>input</kbd> with no arguments, Adhearsion will take in digits until the caller presses "#".</p>
+<p>Taking input via phone keypad input is extremely simple.</p>
 
 <pre>desired_extension = input</pre>
+
+<p>The example above shows a Ruby principle at work: <strong>convention over configuration</strong>. All of <kbd>input</kbd>'s parameters are optional. The code above simply receives any number of digits with no timeout until the user presses <kbd>#</kbd>. The result is then bound to the <kbd>desired_extension</kbd> variable with the delimiting "#" removed.</p>
 
 <p>Or you can explicitly receive a number of digits with a timeout.</p>
   
 <pre>desired_extension = input 3, :timeout => 1.minute</pre>  
+
+<p>This takes in three digits, waiting up to one minute for each successive key entry. Though a one minute timeout is a bit contrived, this example shows an interesting feature of Ruby: everything, even numbers, is an object. Objects have methods, therefore a <kbd>minute</kbd> method makes perfect sense.</p>
+
+<h2>Conferencing</h2>
+
+<p>Want to the user to join a conference bridge? Easy.</p>
+
+<pre>join "sales"</pre>
+
+<p></p>
 
 <h2>Contexts are your friend</h2>
 
@@ -28,9 +40,16 @@ incoming {
   play "weasels-eaten-phonesys"
 }
 internal {
-  
+  case extension
+    when 1
+    when 2
+    when 3
+    when /
+  end
 }
-</pre>
+unknown {
+  play 'invalid'
+}</pre>
 
 <h2>Simple menus</h2>
 
@@ -86,3 +105,8 @@ if sales.agents.any?
 end
 </pre>
 
+<h1>Database Access</h1>
+
+<p>Most Adhearsion applications use Ruby on Rails' <a href="http://en.wikipedia.org/wiki/Object-relational_mapping" title="Object-Relational Mapper">ORM</a>. If you're already familiar with Ruby, you've probably already used it.</p>
+
+<p>If you haven't heard of ActiveRecord before, then this section is for you. ActiveRecord is a library for connecting to virtually any Relational Database Management System, such as MySQL, PostgreSQL, Microsoft SQL Server, sqlite3, etc.</p>

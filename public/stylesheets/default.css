@@ -93,6 +93,10 @@ pre, kbd {
   font-family: Monaco, monospace;
 }
 
+kbd {
+  font-size: 90%;
+}
+
 pre {
   font-size: 12px;
   border: 1px dotted #ddd;
