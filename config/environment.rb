@@ -78,6 +78,7 @@ Rails::Initializer.run do |config|
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
   
   confluence_config_file = File.dirname(__FILE__) + "/confluence.yml" 
+  #confluence_config_file = "/opt/confluence.yml" 
   if File.exists? confluence_config_file
     confluence_config = YAML.load_file confluence_config_file
     host, username, password = confluence_config.values_at "host", "username", "password"
