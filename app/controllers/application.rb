@@ -31,4 +31,17 @@ class ApplicationController < ActionController::Base
       :content => "The app that runs this site dynamically fetches the blog posts for this page from our wiki, but it seems the wiki is down at the moment. Sorry for the inconvenience."
     }]
   end
+  
+  def load_blog_posts_from_aggregator
+    feed_url = "http://pipes.yahoo.com/pipes/pipe.run?_id=DkJE9pns3RGlyDwlBR50VA&_render=rss"
+    feed_items = Hpricot(open(feed_url)) / "item"
+    normalized = feed_items.to_a[0,1].map do |feed_item|
+      title    = feed_item.at("title").innerText
+      pub_date = DateTime.parse(feed_item.at("pubDate").innerText) rescue Time.now
+      url      = feed_item.at("link").innerText
+      content  = feed_item.at("content:encoded").innerText
+      {:title => title, :date => pub_date, :url => url, :content => content }
+    end
+  end
+  
 end

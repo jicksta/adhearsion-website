@@ -12,6 +12,7 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 require 'md5'
 require 'open-uri'
+require 'hpricot'
 require File.join(File.dirname(__FILE__), *%w[.. confluence])
 
 Rails::Initializer.run do |config|
