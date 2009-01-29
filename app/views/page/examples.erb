@@ -4,7 +4,7 @@
 
 <h2>Playing a sound file</h2>
 
-<p>When using Adhearsion with Asterisk, you have <em>thousands</em> of sound files to use right out of the box. These range from the useful everyday sound files to pure novelties such as monkeys screaming and practical jokes.</p>
+<p>When using Adhearsion with Asterisk, you have <em><a href="http://www.voip-info.org/wiki/view/Asterisk+sound+files" target="_blank">hundreds</a></em> of sound files to use right out of the box. These range from the useful everyday sound files to pure novelties such as monkeys screaming (tt-monkeys) and practical jokes. The dialplan method that may used is <em><a href="http://api.adhearsion.com/Adhearsion/VoIP/Asterisk/Commands.html#play-instance_method">play</a></em> as follows</p>
 
 <pre>
   play "hello-world"
@@ -13,13 +13,25 @@
 
 <h2>Receiving input</h2>
 
-<p>Taking input via phone keypad input is extremely simple. When calling <kbd>input</kbd> with no arguments, Adhearsion will take in digits until the caller presses "#".</p>
+<p>Taking input via phone keypad input is extremely simple.</p>
 
 <pre>desired_extension = input</pre>
+
+<p>The example above shows a Ruby principle at work: <strong>convention over configuration</strong>. All of <kbd><a href="http://api.adhearsion.com/Adhearsion/VoIP/Asterisk/Commands.html#input-instance_method" target="_blank">input</a></kbd>'s parameters are optional. The code above simply receives any number of digits with no timeout until the user presses <kbd>#</kbd>. The result is then bound to the <kbd>desired_extension</kbd> variable with the delimiting "#" removed.</p>
 
 <p>Or you can explicitly receive a number of digits with a timeout.</p>
   
 <pre>desired_extension = input 3, :timeout => 1.minute</pre>  
+
+<p>This takes in three digits, waiting up to one minute for each successive key entry. Though a one minute timeout is a bit contrived, this example shows an interesting feature of Ruby: everything, even numbers, is an object. Objects have methods, therefore a <kbd>minute</kbd> method makes perfect sense.</p>
+
+<h2>Conferencing</h2>
+
+<p>Want the user to join a conference bridge? Easy, use the <a href="http://api.adhearsion.com/Adhearsion/VoIP/Asterisk/Commands.html#join-instance_method" target="_blank">join</a> method.</p>
+
+<pre>join "sales"</pre>
+
+<p></p>
 
 <h2>Contexts are your friend</h2>
 
@@ -28,13 +40,20 @@ incoming {
   play "weasels-eaten-phonesys"
 }
 internal {
-  
+  case extension
+    when 1
+    when 2
+    when 3
+    when /
+  end
 }
-</pre>
+unknown {
+  play 'invalid'
+}</pre>
 
 <h2>Simple menus</h2>
 
-<p>The <kbd>menu</kbd> command lets you construct menus which cleanly </p>
+<p>The <kbd><a href="http://api.adhearsion.com/Adhearsion/VoIP/Asterisk/Commands.html#menu-instance_method" target="_blank">menu</a></kbd> command lets you construct menus which cleanly </p>
 
 <pre>
 menu "welcome", "main_prompt" do |link|
@@ -48,7 +67,7 @@ end
 
 <h2>Robust menus</h2>
 
-<p>The <kbd>menu</kbd> command lets you construct menus which cleanly </p>
+<p>The <kbd><a href="http://api.adhearsion.com/Adhearsion/VoIP/Asterisk/Commands.html#menu-instance_method" target="_blank">menu</a></kbd> command lets you construct menus which cleanly </p>
 
 <pre>
 menu "prompt", :timeout => 5, :tries => 3 do |link|
@@ -77,7 +96,7 @@ end
 
 <h2>First-class Queues</h2>
 
-<p>When using Adhearsion with Asterisk, you have <em>thousands</em> of sound files to use right out of the box. These range from the useful everyday sound files to pure novelties such as monkeys screaming and practical jokes.</p>
+<p>You may use the built-in Asterisk queues with the <a href="http://api.adhearsion.com/Adhearsion/VoIP/Asterisk/Commands.html#queue-instance_method" target="_blank">queue</a> method.</p>
 
 <pre>
 sales = queue "sales"
@@ -86,3 +105,8 @@ if sales.agents.any?
 end
 </pre>
 
+<h1>Database Access</h1>
+
+<p>Most Adhearsion applications use Ruby on Rails' <a href="http://en.wikipedia.org/wiki/Object-relational_mapping" title="Object-Relational Mapper">ORM</a>. If you're already familiar with Ruby, you've probably already used it.</p>
+
+<p>You may find all of the documentation on how to use a database in your Adhearsion application on the Adhearsion Wiki <a href="http://docs.adhearsion.com/display/adhearsion/ActiveRecord" target="_blank">here</a>.</p>

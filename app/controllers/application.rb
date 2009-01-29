@@ -14,12 +14,20 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   
   
-  def load_blog_posts_from_wiki
-    WIKI.getBlogEntries("adhearsion").map do |blog_entry|
+  ##
+  # Uses the Confluence XML-RPC API to fetch blog entries. You may pass in the the number of blog entries you'd like to get
+  # or -1 for unlimited.
+  #
+  def load_blog_posts_from_wiki(limit=6)
+    all_blog_entries        = WIKI.getBlogEntries "adhearsion"
+    sorted_blog_entries     = all_blog_entries.sort_by { |blog_entry| blog_entry["publishDate"].to_date }
+    relevant_blog_entries   = sorted_blog_entries.size > limit ? [-limit..-1] : sorted_blog_entries
+    ordered_blog_entries    = relevant_blog_entries.reverse
+    normalized_blog_entries = ordered_blog_entries.map do |blog_entry|
       normalized = {}
       normalized[:title], normalized[:url] = blog_entry.values_at "title", "url"
       normalized[:date] = blog_entry["publishDate"].to_date
-      normalized[:content] = WIKI.getBlogEntry(blog_entry["id"])["content"]
+      normalized[:content] = WIKI.renderContent "adhearsion", blog_entry["id"], "", "style" => "clean"
       normalized
     end
   rescue => error
