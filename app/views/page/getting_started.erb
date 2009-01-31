@@ -42,7 +42,7 @@
 <h3 class="installation-instruction-toggler">Mac OS X Tiger</h3>
 
 <div id="tiger-installation" class="installation-instructions">
-  <p>We recommend installing Ruby and RubyGems together using MacPorts. MacPorts is a package manager for Mac OS X similar to the package managers that come with virtually every Linux distribution. Download MacPorts from <a href="http://www.macports.org/">HERE</a> and follow the install instructions on the website.</p>
+  <p>We recommend installing Ruby and RubyGems together using MacPorts. MacPorts is a package manager for Mac OS X similar to the package managers that come with virtually every Linux distribution. Download MacPorts from <a href="http://www.macports.org/" target="_blank">HERE</a> and follow the install instructions on the website.</p>
 
   <p>MacPorts installs the <kbd>port</kbd> command. Use this to install Ruby and RubyGems by doing...</p>
 
@@ -89,18 +89,7 @@
 
 <div id="windows-installation" class="installation-instructions">
 
-  <p><em>Note: Adhearsion is a framework for simplifying the writing of software. For this reason it has no intrinsic graphical user interface and using Adhearsion will require some degree of comfort with the Windows command prompt.</em></p>
-
-  <p><em>Note: A popular option for Windows users is to run Adhearsion on a remote Linux machine and use a SSH client such as Putty to control it. If you have a Linux server you may use for this, consider this as an option.</em></p>
-
-  <p>We recommend using the Ruby One-Click Installer, available from <a href="http://www.ruby-lang.org/en/downloads/">the Ruby website's download page</a>. This will automatically install Ruby and RubyGems.</p>
-
-  <p>When you've installed Ruby and RubyGems, open your command prompt and use the newly-installed "gem" command to install Adhearsion:</p>
-
-  <pre>gem install adhearsion</pre>
-
-  <p>This will automatically add the <kbd>ahn</kbd> command to your system, allowing you to create and start applications in the following step.</p>
-  
+  <p><em>Note: Currently Ahearsion does not support Windows, although we are working to have this support. In the meantime please refer to the <a href="/faq#windows">FAQ</a> for updates and how to use Adhearsion in the meantime.</em></p>  
 </div>
 
 </div>
@@ -114,7 +103,7 @@ $("#installation-accordion").accordion({
 });
 </script>
 
-<p>For more ways to install Adhearsion (including how to get the latest-and-greatest code) see the <a href="/download">Download page</a>.</p>
+<p>For more ways to install Adhearsion (including how to get the latest-and-greatest code) see the <a href="/download" target="_blank">Download page</a>.</p>
 
 <h2>Creating and running your first application</h2>
 
@@ -147,8 +136,8 @@ ahn enable component sandbox</pre>
 
 <p>Now that the <kbd>sandbox</kbd> component is enabled, we need to configure it with your username and password. Doing this is very easy. Open the <kbd>components/sandbox/sandbox.yml</kbd> file in your favorite text editor. It will look like the following:</p>
 
-<pre>username: user123
-password: pass123</pre>
+<pre>username: rubyrox
+password: adhearsionislove</pre>
 
 <p>Replace <kbd>user123</kbd> and <kbd>pass123</kbd> with the username and password you gave the signup form on this page. Adhearsion uses the very clean and readable YAML markup language (file extension <kbd>.yml</kbd>) for virtually all of its configuration.</p>
 
@@ -182,15 +171,17 @@ password: pass123</pre>
 
 <p>We added a context named <kbd>sandbox</kbd> because this is where calls from into the sandbox will go. If you have other systems handled by this Adhearsion application, they can each go into their own respective Adhearsion context. In the sandbox context, you can also see the use of a dialplan method with arguments, in this case the string of text "hello-world" which corresponds to a sound filename on the sandbox server into which we'll now call.</p>
 
+<p><em>Note: If you would like to access additional sound files beyond 'hello-world' you have a full listing of available sound files <a href="http://docs.adhearsion.com/display/adhearsion/Available+Sound+Files" target="_blank">here</a>.</em></p>
+
 <h2>Calling into your application.</h2>
 
 <p>Lastly, we'll use Voice over IP (VoIP) phone software (commonly called a "softphone" in telephony jargon) to call into our sandbox and execute your application.</p>
 
 <img style="margin: -25px;float:right;" src="/images/gizmo-uri-field.png" alt=""/>
   
-<p>We recommend you use the free Gizmo5 softphone to place calls into the sandbox. Gizmo5 is a free, cross-platform, and gets through firewalls well. Go to <a href="http://gizmoproject.com">the Gizmo5 website</a> and download Gizmo5 for your platform. When prompted to sign up for a Gizmo5 account, go ahead and get one.</p>
+<p>We recommend you use the free Gizmo5 softphone to place calls into the sandbox. Gizmo5 is a free, cross-platform, and gets through firewalls well. Go to <a href="http://gizmoproject.com" target="_blank">the Gizmo5 website</a> and download Gizmo5 for your platform. When prompted to sign up for a Gizmo5 account, go ahead and get one.</p>
 
-<p>You're almost done! When the Gizmo interface comes up, enter <i><kbd>xyz</kbd></i><kbd>@adhearsion.com</kbd> in the text field on the interface, replacing <i><kbd>xyz</kbd></i> with your sandbox account username. VoIP phone system extensions may be in the format of an email address.</p>
+<p>You're almost done! When the Gizmo interface comes up, enter <i><kbd>xyz</kbd></i><kbd>@sandbox.adhearsion.com</kbd> in the text field on the interface, replacing <i><kbd>xyz</kbd></i> with your sandbox account username. VoIP phone system extensions may be in the format of an email address.</p>
 
 <p>Press the dial button on Gizmo. When it connects, you should see your Adhearsion application scroll as you hear a woman's voice say "Hello world!".</p>
 
@@ -216,7 +207,7 @@ password: pass123</pre>
 
 <ul>
   <li>Try invoking the <kbd>simon_game</kbd> method that came with in your dialplan. Hint: it's a memory game.</li>
-  <li>Try out some of the <a href="/examples">Examples</a>.</li>
+  <li>Try out some of the <a href="/examples" target="_blank">Examples</a>.</li>
 </ul>
 
 <p>Enjoy!</p>
