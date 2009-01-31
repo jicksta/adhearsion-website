@@ -4,6 +4,7 @@
   <title>Adhearsion: <%= @title %></title>
   
   <link rel="stylesheet" type="text/css" href="/stylesheets/default.css" media="screen"/>
+  <link rel="shortcut icon" href="/favicon.ico" />
   
   <%= javascript_include_tag "jquery-1.2.6", "jquery.form", "ui/jquery.ui.all" %>
   
@@ -11,7 +12,18 @@
   <meta name="description" content="description"/>
   <meta name="keywords" content="keywords"/> 
   <meta name="author" content="author"/> 
-  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+  <script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+  try {
+  var pageTracker = _gat._getTracker("UA-327434-4");
+  pageTracker._trackPageview();
+  } catch(err) {}</script>
+  
 </head><body>
 
 <div class="container">
