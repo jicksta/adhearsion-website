@@ -1,17 +1,25 @@
-<div id="feed-icon">
-  <a href="http://feeds.feedburner.com/adhearsion" title="Subscribe to my feed" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="Subscribe to this blog" style="border:0"/></a>
-</div>
+<script type="text/javascript" src="http://shots.snap.com/ss/080d82579e5becba7355195b27c73010/snap_shots.js"></script>
 
-<!-- <% for post in @blog_posts %>
-<div class="blog_post">
-  <h1><a href="<%= post[:url] %>"><%= post[:title] %></a></h1>
-  <p class="meta"><%= post[:date].strftime("%B %d, %Y") %></p>
-  <%= post[:content] %>
-</div>
-<% end %> -->
-
-<div class="blog_post">
+<div id="homepage-intro">
   <h1>Welcome to Adhearsion.com!</h1>
-  <p class="meta">January 31st</p>
-  <p>We've recently re-done this entire site! Take a look around!</p>
+  <p>This site has recently received a complete overhaul! Take a look around!</p>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(".homepage-news-date").timeago();
+    /*
+    setInterval(function() {
+      $(".homepage-news-date").humane_dates();
+    }, 5000);*/
+  });
+</script>
+<h1>Community News Feed <a href="http://feeds.feedburner.com/adhearsion" title="Subscribe to my feed" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="Subscribe to this blog" style="border:0"/></a></h1>
+
+<div id="homepage-news">
+<% for post in @blog_posts %>
+  <div class="blog-post">
+    <p><a href="<%= post[:url] %>"><span class="title"><%= h post[:title] %></span> <span class="homepage-news-date"><%= post[:date].strftime('%Y-%m-%d %H:%M:%S') %></span></a></p>
+  </div>
+<% end %>
 </div>

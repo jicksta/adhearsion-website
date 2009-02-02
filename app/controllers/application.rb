@@ -31,7 +31,6 @@ class ApplicationController < ActionController::Base
       normalized
     end
   rescue => error
-    p error
     [{
       :title => "Sorry, we're having some technical difficulties",
       :date => Time.now,
@@ -42,13 +41,17 @@ class ApplicationController < ActionController::Base
   
   def load_blog_posts_from_aggregator
     feed_url = "http://pipes.yahoo.com/pipes/pipe.run?_id=DkJE9pns3RGlyDwlBR50VA&_render=rss"
-    feed_items = Hpricot(open(feed_url)) / "item"
-    normalized = feed_items.to_a[0,1].map do |feed_item|
-      title    = feed_item.at("title").innerText
-      pub_date = DateTime.parse(feed_item.at("pubDate").innerText) rescue Time.now
-      url      = feed_item.at("link").innerText
-      content  = feed_item.at("content:encoded").innerText
-      {:title => title, :date => pub_date, :url => url, :content => content }
+    feed_content = open(feed_url).read
+
+    parsed_feed = Hash.from_xml feed_content
+    feed_items = parsed_feed["rss"]["channel"]["item"]
+
+    normalized = feed_items.to_a.map do |feed_item|
+      title    = feed_item["title"]
+      pub_date = DateTime.parse(feed_item["pubDate"]) rescue Time.now
+      url      = feed_item["link"]
+      p feed_item["guid"]
+      {:title => title, :date => pub_date, :url => url}
     end
   end
   
