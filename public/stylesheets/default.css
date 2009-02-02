@@ -259,7 +259,32 @@ h3.installation-instruction-toggler:hover {
 	border-left: 4px solid black;
 }
 
-#feed-icon {
-  float: right;
-  margin-right: -10px;
+#homepage-news {
+  margin-left: 0;
+}
+
+#homepage-news div {
+  margin: 0;
+}
+#homepage-news div p {
+  margin: 0;
+  padding: 0;
+}
+#homepage-news div a {
+  display: block;
+  padding: 10px 6px;
+  text-decoration: none;
+}
+
+#homepage-news div a span.title {
+  font-size: 15px;
+  letter-spacing: -0.5px;
+  font-weight: bold;
+}
+#homepage-news div a span.homepage-news-date {
+  
+}
+#homepage-news div a:hover {
+  background-color: black;
+  color: white;
 }
