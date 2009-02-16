@@ -1,52 +1,29 @@
-
-
-<h2>Manage Examples</h2>
 <script type="text/javascript">
   $(document).ready(function() {
-    $("ul.sortable").sortable({
-      placeholder: 'ui-state-highlight',
-      forcePlaceholderSize: true,
-      axis: "y",
-      containment: "parent",
-      update: function(event, ui) {
-        url = "<%= url_for(:controller => 'example', :action => 'reorder_examples') %>"
-        order = $(ui.item).parent(".sortable").sortable("toArray").map(function(section_id) {
-          return parseInt(section_id.replace("example_", ""));
-        }).join(",");
-        
-        $.post(url, {order: order}, function(data, textStatus) {
-          alert("Done! " + textStatus)
-        }, 'json');
-        
-      }
-    });
+    $(".examples").accordion({
+      alwaysOpen: false,
+      header: "h3",
+      active: true,
+      autoHeight: false
+    });  
   });
 </script>
 
-<p class="new-link">
-  <% link_to new_example_path, {:title => "Edit"} do %>
-    <button class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-plusthick"></span> New Example</button>
-  <% end %>
-</p>
+<% for section in @sections %>
+<h2><%= h section.title %></h2>
 
-<ul class="sortable ui-sortable">
-<% for example in @examples %>
+<%= section.description_html %>
 
-  <li class="ui-state-default" id="example_<%= example.id %>">
-    
-    <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
-    
-    <% link_to example, :confirm => 'Are you sure?', :method => :delete do %>
-      <span class="ui-icon ui-icon-trash" title="Delete"></span>
-    <% end %>
-    
-    <% link_to edit_example_path(example) do %>
-      <span class="ui-icon ui-icon-pencil" title="Edit"></span>
-    <% end %>
-    
-    <p><%= h example.title %></p>
-    
-  </li>
+<div class="examples">
+<% for example in section.examples %>
+
+  <div class="example">
+    <h3 class="example-name"><a href="#"><%= h example.title %></a></h3>
+    <div class="content-html">
+      <%= example.content_html %>
+    </div>
+  </div>
   
 <% end %>
-</ul>
+</div>
+<% end %>

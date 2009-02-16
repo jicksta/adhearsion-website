@@ -51,8 +51,7 @@ class Example < ActiveRecord::Base
   protected
   
   def generate_content_html
-    return if content.blank?
-    self.content_html = self.class.format_markdown_to_html content
+    self.content_html = content.blank? ? "" : self.class.format_markdown_to_html(content)
   end
   
   

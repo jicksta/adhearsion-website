@@ -88,12 +88,4 @@ class ExampleSectionsController < ApplicationController
     end
   end
   
-  def reorder_sections
-    sections = params[:order]
-    sections.split(",").each_with_index do |section, index|
-      ExampleSection.find(section).update_attribute "position", index
-    end
-    render :text => "ok"
-  end
-  
 end

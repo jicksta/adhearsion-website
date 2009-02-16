@@ -3,22 +3,22 @@
 <% form_for(@example) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
+  <h3><%= f.label :title %></h3>
+  <%= f.text_field :title %>
   
-  <p>Section: <%= select("example", "example_section_id", @sections.collect {|s| [ s.title, s.id ] }) %></p>
-
-  <p>
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
-  </p>
-
-  <p>
-    <%= f.submit "Update" %>
-  </p>
+  <h3>Section</h3>
+  <%= select("example", "example_section_id", @sections.collect {|s| [ s.title, s.id ] }) %>
+  
+  <h3><%= f.label :content %></h3>
+  <%= f.text_area :content, :class => "resizable" %>
+  
+  <div class="info-box ui-state-highlight ui-corner-all" style="width: 250px">
+    <p><span class="ui-icon ui-icon-info"></span> Supports Markdown style</p>
+  </div>
+  
+  <p><%= f.submit "Update" %></p>
+  
 <% end %>
 
 <%= link_to 'Show', @example %> |
-<%= link_to 'Back', examples_path %>
+<%= link_to 'Back', :controller => "admin", :action => "examples" %>

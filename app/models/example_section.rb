@@ -1,4 +1,7 @@
 class ExampleSection < ActiveRecord::Base
+  
+  has_many :examples, :order => "position"
+  
   acts_as_list
   
   validates_presence_of :title

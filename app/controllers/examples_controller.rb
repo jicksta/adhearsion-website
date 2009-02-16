@@ -6,11 +6,15 @@ class ExamplesController < ApplicationController
   # GET /examples.xml
   def index
     @examples = Example.find(:all)
-
+    @sections = ExampleSection.find(:all, :order => "position")
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render :layout => "page" }
       format.xml  { render :xml => @examples }
     end
+  end
+  
+  def reorder
+    @examples = Example.find(:all)
   end
 
   # GET /examples/1
@@ -86,14 +90,6 @@ class ExamplesController < ApplicationController
       format.html { redirect_to(examples_url) }
       format.xml  { head :ok }
     end
-  end
-  
-  def reorder_examples
-    sections = params[:order]
-    sections.split(",").each_with_index do |section, index|
-      Example.find(section).update_attribute "position", index
-    end
-    render :text => "ok"
   end
   
 end
