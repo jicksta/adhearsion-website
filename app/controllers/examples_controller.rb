@@ -5,6 +5,7 @@ class ExamplesController < ApplicationController
   # GET /examples
   # GET /examples.xml
   def index
+    @title = "Examples"
     @examples = Example.find(:all)
     @sections = ExampleSection.find(:all, :order => "position")
     respond_to do |format|

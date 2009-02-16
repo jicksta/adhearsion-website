@@ -3,10 +3,10 @@
   
   <title>Adhearsion: <%= @title %></title>
   
-  <link rel="stylesheet" type="text/css" href="/stylesheets/default.css" media="screen"/>
+  <%= stylesheet_link_tag "default", "syntax", "theme/ui.all" %>
   <link rel="shortcut icon" href="/favicon.ico" />
   
-  <%= javascript_include_tag "jquery-1.2.6", "jquery.form", "ui/jquery.ui.all", "jquery.timeago" %>
+  <%= javascript_include_tag "jquery-1.3.1", "jquery.form", "jquery-ui-personalized-1.6rc6.min.js", "jquery.timeago" %>
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   <meta name="description" content="description"/>

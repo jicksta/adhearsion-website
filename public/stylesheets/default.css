@@ -75,7 +75,7 @@ h1,h2,h3 {color: #5fc6e9;}
 /* misc */
 .clearer {clear: both;}
 .main_right .padded {padding: 6px 2px 6px 16px;}
-.main .padded {padding: 18px 24px;}
+.main .padded {padding: 0 24px 18px 24px; }
 .meta {font-size: 0.8em; color: #666;}
 .left {float: left;}
 .right {float: right;}
@@ -289,6 +289,16 @@ h3.installation-instruction-toggler:hover {
   color: white;
 }
 
+h3.example-name {
+  margin-bottom: 0;
+}
+
+div.example div.ui-accordion-content {
+  font-family: "Lucida Sans Unicode",sans-serif;
+  font-size: 13px;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
 
 div.example div.content-html {
 }
