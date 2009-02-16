@@ -77,3 +77,8 @@ ul.sortable li p {
   float: left;
   margin-right: 0.3em;
 }
+
+.content-container {
+  border-top: 3px dotted #E4E4E4;
+  border-bottom: 3px dotted #E4E4E4;
+}

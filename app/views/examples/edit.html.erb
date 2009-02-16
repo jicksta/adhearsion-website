@@ -1,4 +1,4 @@
-<h1>Editing example</h1>
+<h2>Editing Example</h2>
 
 <% form_for(@example) do |f| %>
   <%= f.error_messages %>
@@ -7,22 +7,14 @@
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </p>
+  
+  <p>Section: <%= select("example", "example_section_id", @sections.collect {|s| [ s.title, s.id ] }) %></p>
+
   <p>
     <%= f.label :content %><br />
     <%= f.text_area :content %>
   </p>
-  <p>
-    <%= f.label :content_html %><br />
-    <%= f.text_area :content_html %>
-  </p>
-  <p>
-    <%= f.label :position %><br />
-    <%= f.text_field :position %>
-  </p>
-  <p>
-    <%= f.label :example_section_id %><br />
-    <%= f.text_field :example_section_id %>
-  </p>
+
   <p>
     <%= f.submit "Update" %>
   </p>

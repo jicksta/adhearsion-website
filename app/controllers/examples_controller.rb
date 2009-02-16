@@ -1,4 +1,7 @@
 class ExamplesController < ApplicationController
+  
+  layout "admin"
+  
   # GET /examples
   # GET /examples.xml
   def index
@@ -25,7 +28,8 @@ class ExamplesController < ApplicationController
   # GET /examples/new.xml
   def new
     @example = Example.new
-
+    @sections = ExampleSection.find(:all)
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @example }
@@ -35,6 +39,7 @@ class ExamplesController < ApplicationController
   # GET /examples/1/edit
   def edit
     @example = Example.find(params[:id])
+    @sections = ExampleSection.find(:all)
   end
 
   # POST /examples
@@ -82,4 +87,13 @@ class ExamplesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def reorder_examples
+    sections = params[:order]
+    sections.split(",").each_with_index do |section, index|
+      Example.find(section).update_attribute "position", index
+    end
+    render :text => "ok"
+  end
+  
 end

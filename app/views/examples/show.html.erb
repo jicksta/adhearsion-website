@@ -1,28 +1,8 @@
-<p>
-  <b>Title:</b>
-  <%=h @example.title %>
-</p>
+<h2><%= h @example.title %></h2>
+<h3>Section "<%=h @example.example_section.title %>"</h3>
 
-<p>
-  <b>Content:</b>
-  <%=h @example.content %>
-</p>
+<div class="content-container">
+  <%= @example.content_html %>
+</div>
 
-<p>
-  <b>Content html:</b>
-  <%=h @example.content_html %>
-</p>
-
-<p>
-  <b>Position:</b>
-  <%=h @example.position %>
-</p>
-
-<p>
-  <b>Example section:</b>
-  <%=h @example.example_section_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_example_path(@example) %> |
-<%= link_to 'Back', examples_path %>
+<p><%= link_to 'Edit', edit_example_path(@example) %> | <%= link_to 'Back', examples_path %></p>
