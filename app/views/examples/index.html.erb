@@ -1,0 +1,28 @@
+<h1>Listing examples</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Content html</th>
+    <th>Position</th>
+    <th>Example section</th>
+  </tr>
+
+<% for example in @examples %>
+  <tr>
+    <td><%=h example.title %></td>
+    <td><%=h example.content %></td>
+    <td><%=h example.content_html %></td>
+    <td><%=h example.position %></td>
+    <td><%=h example.example_section_id %></td>
+    <td><%= link_to 'Show', example %></td>
+    <td><%= link_to 'Edit', edit_example_path(example) %></td>
+    <td><%= link_to 'Destroy', example, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New example', new_example_path %>

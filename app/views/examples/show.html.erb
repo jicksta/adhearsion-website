@@ -1,0 +1,28 @@
+<p>
+  <b>Title:</b>
+  <%=h @example.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @example.content %>
+</p>
+
+<p>
+  <b>Content html:</b>
+  <%=h @example.content_html %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%=h @example.position %>
+</p>
+
+<p>
+  <b>Example section:</b>
+  <%=h @example.example_section_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_example_path(@example) %> |
+<%= link_to 'Back', examples_path %>

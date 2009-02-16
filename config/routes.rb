@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :examples
+
   
   map.connect "example_section/reorder_sections", :controller => "example_sections", :action => "reorder_sections" 
 
