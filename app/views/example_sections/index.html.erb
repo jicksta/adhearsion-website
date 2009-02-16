@@ -1,0 +1,51 @@
+
+<h2>Manage Example Sections</h2>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("ul.sortable").sortable({
+      placeholder: 'ui-state-highlight',
+      forcePlaceholderSize: true,
+      axis: "y",
+      containment: "parent",
+      update: function(event, ui) {
+        url = "<%= url_for(:controller => 'example_section', :action => 'reorder_sections') %>"
+        order = $(ui.item).parent(".sortable").sortable("toArray").map(function(section_id) {
+          return parseInt(section_id.replace("example_section_", ""));
+        }).join(",");
+        
+        $.post(url, {order: order}, function(data, textStatus) {
+          alert("Done! " + textStatus)
+        }, 'json');
+        
+      }
+    });
+  });
+</script>
+
+<p class="new-link">
+  <% link_to new_example_section_path, {:title => "Edit"} do %>
+    <button class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-plusthick"></span> New Section</button>
+  <% end %>
+</p>
+
+<ul class="sortable ui-sortable">
+<% for example_section in @example_sections %>
+
+  <li class="ui-state-default" id="example_section_<%= example_section.id %>">
+    
+    <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+    
+    <% link_to example_section, :confirm => 'Are you sure?', :method => :delete do %>
+      <span class="ui-icon ui-icon-trash" title="Delete"></span>
+    <% end %>
+    
+    <% link_to edit_example_section_path(example_section) do %>
+      <span class="ui-icon ui-icon-pencil" title="Edit"></span>
+    <% end %>
+    
+    <p><%= h example_section.title %></p>
+    
+  </li>
+  
+<% end %>
+</ul>

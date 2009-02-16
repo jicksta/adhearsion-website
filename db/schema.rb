@@ -9,7 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090109080213) do
+ActiveRecord::Schema.define(:version => 20090215223806) do
+
+  create_table "example_sections", :force => true do |t|
+    t.integer  "position"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sandbox_users", :force => true do |t|
     t.string   "name"
