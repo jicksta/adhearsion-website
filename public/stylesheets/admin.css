@@ -15,6 +15,9 @@ h2 {
   text-align: center;
 }
 
+h3 {
+  margin: 12px 0 0 0;
+}
 #content {
   margin: 0 auto;
   width: 400px;
@@ -59,4 +62,18 @@ ul.sortable li p {
 
 .ui-icon-pencil, .ui-icon-trash {
   float: right;
+}
+
+.info-box {
+  padding: 0 4px;
+  margin: 6px;
+}
+
+.info-box p {
+  margin: 5px;
+}
+
+.info-box .ui-icon {
+  float: left;
+  margin-right: 0.3em;
 }

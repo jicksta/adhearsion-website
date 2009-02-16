@@ -1,23 +1,20 @@
-<h1>New example_section</h1>
+<h2>New Example Section</h2>
 
 <% form_for(@example_section) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :position %><br />
-    <%= f.text_field :position %>
-  </p>
-  <p>
-    <%= f.label :title %><br />
+  <h3><%= f.label :title %></h3>
     <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.submit "Create" %>
-  </p>
+  
+  <h3><%= f.label :description %></h3>
+  <%= f.text_area :description %>
+  
+  <div class="info-box ui-state-highlight ui-corner-all" style="width: 250px">
+    <p><span class="ui-icon ui-icon-info"></span> Supports Markdown style</p>
+  </div>
+
+  <p><%= f.submit "Create" %></p>
+  
 <% end %>
 
 <%= link_to 'Back', example_sections_path %>

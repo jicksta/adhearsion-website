@@ -1,18 +1,8 @@
-<p>
-  <b>Position:</b>
-  <%=h @example_section.position %>
-</p>
+<h3>Title</h3>
+<p><%=h @example_section.title %></p>
 
-<p>
-  <b>Title:</b>
-  <%=h @example_section.title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%=h @example_section.description %>
-</p>
-
+<h3>Description (Rendered)</h3>
+<p><%= @example_section.description_html %></p>
 
 <%= link_to 'Edit', edit_example_section_path(@example_section) %> |
 <%= link_to 'Back', example_sections_path %>
