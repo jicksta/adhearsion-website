@@ -82,6 +82,8 @@ Rails::Initializer.run do |config|
   # Please note that observers generated using script/generate observer need to have an _observer suffix
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
   
+  config.active_record.observers = :user_observer
+  
   confluence_config_file = File.dirname(__FILE__) + "/confluence.yml" 
   if File.exists? confluence_config_file
     confluence_config = YAML.load_file confluence_config_file
