@@ -75,16 +75,6 @@
 			<li><a href="/contact">Contact</a></li>
 		</ul>
 
-    <!--
-		<h1>Getting Started</h1>
-		<ul>
-			<li><a href="/getting_started/rails_developers">For Rails developers</a></li>
-			<li><a href="/getting_started/asterisk_hackers">For Asterisk hackers</a></li>
-			<li><a href="/getting_started/other_developers">For other developers</a></li>
-			<li><a href="/getting_started/system_administrators">For sysadmins</a></li>
-		</ul>
-    -->
-  
 		<h1>Community</h1>
 		<ul>
 			<li><a href="http://jicksta.com">Jay Phillips' Blog</a></li>
@@ -95,6 +85,24 @@
 			<li><a href="http://groups.google.com/group/adhearsion">Mailing List &amp; Forum</a></li>
 		</ul>
 
+    
+    
+    <% if logged_in? %>
+      <h1><%= current_user.login.capitalize %></h1>
+      <ul>
+        <li><a href="/account">Manage Account</a></li>
+        <li><a href="/logout">Log out</a></li>
+      </ul>
+    <% else %>
+      <h1>Account</h1>
+      <ul>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/signup">Sign up</a></li>
+        <li><a href="#">What is this?</a></li>
+      </ul>
+    <% end %>
+    
+    
 	</div>
 		
 	<div class="main">

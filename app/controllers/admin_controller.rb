@@ -2,6 +2,8 @@ class AdminController < ApplicationController
   
   protect_from_forgery :except => [:reorder_sections, :reorder_examples] 
   
+  before_filter :login_required
+  
   def sections
     @example_sections = ExampleSection.find :all
   end
@@ -25,5 +27,9 @@ class AdminController < ApplicationController
     end
     render :text => "ok"
   end
-  
+
+  def authorized?
+    logged_in? && current_user.admin?
+  end
+
 end

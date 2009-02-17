@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
 
   validates_presence_of     :email
   validates_length_of       :email,    :within => 6..100 #r@a.wk
-  validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
 
   
@@ -28,6 +27,9 @@ class User < ActiveRecord::Base
   attr_accessible :login, :email, :name, :password, :password_confirmation
 
 
+  def admin?
+    %w[jicksta jsgoecke].include? login
+  end
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #
