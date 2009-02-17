@@ -4,10 +4,12 @@ class UsersController < ApplicationController
   # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]
   before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge]
   
-
+  layout "page"
+  
   # render new.rhtml
   def new
     @user = User.new
+    @title = "Create your account"
   end
  
   def create
@@ -22,6 +24,10 @@ class UsersController < ApplicationController
       flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
       render :action => 'new'
     end
+  end
+
+  def account
+    @title = "Account Settings"
   end
 
   def activate

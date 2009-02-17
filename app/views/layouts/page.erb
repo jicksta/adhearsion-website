@@ -94,11 +94,48 @@
         <li><a href="/logout">Log out</a></li>
       </ul>
     <% else %>
+    
+      <script type="text/javascript">
+        // Make the Login link pop up a javascript login form.
+        $(function() {          
+          $('#login-dialog').dialog({
+            autoOpen: false,
+      			height: 230,
+      			width: 200,
+      			modal: true,
+      			hide: 'clip',
+      			resizable: false,
+      			title: "Login",
+      			buttons: {
+      				'Login': function() {
+      				  $("#login-dialog input[type='submit']").click();
+      				},
+      				Cancel: function() {
+      					$(this).dialog('close');
+      				}
+      			}
+      		});
+      		$('#login-link').click(function() {
+      		  $('#login-dialog').dialog("open");
+            return false;
+          });
+        });
+      </script>
+    
       <h1>Account</h1>
       <ul>
-        <li><a href="/login">Login</a></li>
+        <li><a href="/login" id="login-link">Login</a>
+          <div id="login-dialog">
+            <%= render :partial => "sessions/login_form" %>
+            <script type="text/javascript">
+              $(function() {
+                $("#login-dialog input[type='submit']").hide();
+              });
+            </script>
+          </div>
+        </li>
         <li><a href="/signup">Sign up</a></li>
-        <li><a href="#">What is this?</a></li>
+        <li><a href="/faq#why-have-accounts">What is this?</a></li>
       </ul>
     <% end %>
     

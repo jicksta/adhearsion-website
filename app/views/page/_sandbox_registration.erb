@@ -1,5 +1,5 @@
-<div id="sandbox-registration">
-  <h2>Sandbox Account Registration</h2>
+<div id="sandbox-registration" class="ui-state-default ui-corner-all">
+  <h2 class="ui-widget-header ui-corner-all">Sandbox Account Registration</h2>
   <div>
 <% form_for :sandbox_user, :id => "register-sandbox-user-form",
        :url => {:controller => "sandbox", :action => "register_user"},
@@ -57,7 +57,13 @@ function reportSuccess(data) {
   
   content = $("#sandbox-registration div");
   content.slideUp();
-  content.replaceWith("<div><h3>Your account has been created!</h3><p>Just follow the instructions on this page to learn how to use it.</p><p>An email will be sent with your login credentials.</p><p><a href='#' onclick=\"javascript:$('#sandbox-registration').slideUp();\">Hide this box</a></p></div>");
+  content.replaceWith("<div>\
+      <h3>Your account has been created!</h3>\
+      <p>Just follow the instructions on this page to learn how to use it.</p>\
+      <p>An email will be sent with your login credentials.</p>\
+      <p id='hide-sandbox-registration'><a href='#' class='ui-state-default ui-corner-all' onclick=\"javascript:$('#sandbox-registration').slideUp();\">Hide this box</a></p>\
+    </div>"
+  );
   return true;
 }
 
