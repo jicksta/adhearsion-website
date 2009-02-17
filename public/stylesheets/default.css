@@ -203,6 +203,22 @@ pre {
   width: 184px;
 }
 
+.info-box {
+  padding: 0 4px;
+  margin: 10px 0;
+}
+
+.info-box p {
+  margin: 5px;
+  padding: 0;
+  font-size: 16px;
+}
+
+.info-box .ui-icon {
+  float: left;
+  margin-right: 0.3em;
+}
+
 #sandbox-registration p#hide-sandbox-registration {
   text-align: center;
 }

@@ -12,9 +12,7 @@
   <h3><%= f.label :content %></h3>
   <%= f.text_area :content, :class => "resizable" %>
   
-  <div class="info-box ui-state-highlight ui-corner-all" style="width: 250px">
-    <p><span class="ui-icon ui-icon-info"></span> Supports Markdown style</p>
-  </div>
+  <%= info "Supports Markdown style", :width => "250px" %>
 
   <p><%= f.submit "Create" %></p>
   

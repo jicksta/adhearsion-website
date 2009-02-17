@@ -11,6 +11,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
 
+
+  map.account "/account", :controller => "users", :action => "account"
   
   map.connect "example_section/reorder_sections", :controller => "example_sections", :action => "reorder_sections" 
 
