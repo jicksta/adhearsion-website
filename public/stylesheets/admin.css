@@ -24,7 +24,7 @@ textarea{
 }
 
 #content {
-  margin: 0 auto;
+  margin: 0 auto 50px auto;
   width: 500px;
   font-family: Helvetica;
 }
