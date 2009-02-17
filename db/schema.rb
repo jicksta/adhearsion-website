@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090217041800) do
+ActiveRecord::Schema.define(:version => 20090217102442) do
 
   create_table "example_sections", :force => true do |t|
     t.integer  "position"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20090217041800) do
     t.datetime "activated_at"
     t.string   "state",                                    :default => "passive"
     t.datetime "deleted_at"
+    t.string   "skype"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
