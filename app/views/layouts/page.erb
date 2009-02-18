@@ -144,6 +144,12 @@
 		
 	<div class="main">
     <div class="padded">
+      <% if flash[:notice] %>
+        <%= info flash[:notice] %>
+      <% end%>
+      <% if flash[:error] %>
+        <%= error_box flash[:error] %>
+      <% end %>
       <%= yield %>
     </div>
 	</div>
