@@ -29,13 +29,13 @@ function validate(formData, jqForm, options) {
   clearBadInputMarkings();
   
   // Make sure the password and its confirmation match
-  if($("#sandbox_user_password").val() != $("#confirm_password").val()) {
-    flagBad($("#sandbox_user_password"));
-    flagBad($("#confirm_password"));
+  if($("#user_password_confirmation").val() != $("#user_password").val()) {
+    flagBad($("#user_password_confirmation"));
+    flagBad($("#user_password"));
     return false;
   }
   // Make sure all fields have been entered
-  required_fields = new Array("sandbox_user_username", "sandbox_user_email", "sandbox_user_name", "sandbox_user_password", "confirm_password");
+  required_fields = new Array("user_login", "user_email", "user_name", "user_password", "user_password_confirmation");
   invalid_fields = $.grep(required_fields, function(required_field) {
     return $("#"+required_field).val() == "";
   });
@@ -68,10 +68,10 @@ function reportSuccess(data) {
 function reportFailure(XMLHttpRequest, textStatus) {
   data = eval("(" + XMLHttpRequest.responseText + ")");
   $.each(data, function(property, errors) {
-    bad_field = $("#sandbox_user_" + property);
+    bad_field = $("#user_" + property);
     flagBad(bad_field);
     $.each(errors, function(i, message) {
-      bad_field.after("<p class='form-error'>" + capitalize(property) + " " + message + "</p>");
+      bad_field.after("<p class='ui-state-error ui-corner-all' style='padding: 5px'>" + capitalize(property) + " " + message + "</p>");
     });
   });
 }
@@ -84,7 +84,7 @@ function capitalize(string) {
   return string[0].toUpperCase() + string.substring(1);
 }
 
-$(document).ready(function() { 
+$(function() { 
     var options = {
       beforeSubmit: validate,
       success: reportSuccess,
