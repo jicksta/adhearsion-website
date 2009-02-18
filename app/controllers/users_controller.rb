@@ -14,10 +14,6 @@ class UsersController < ApplicationController
  
   def create
     logout_keeping_session!
-    puts "HERE::"
-    p params[:user]
-    puts "full"
-    p params
     @user = User.new(params[:user])
     @user.register! if @user && @user.valid?
     success = @user && @user.valid?
