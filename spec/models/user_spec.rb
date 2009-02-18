@@ -6,7 +6,39 @@ require File.dirname(__FILE__) + '/../spec_helper'
 include AuthenticatedTestHelper
 
 describe User do
+  
   fixtures :users
+
+  describe "compatibility with the old SandboxUser class" do
+    
+    it "should fall back onto the old authentication system if no salt is set" do
+      krusty = User.authenticate("krusty", "roflcopter")
+      krusty.should_not be_nil
+      krusty.should be_valid
+    end
+    
+    it "should properly create an identifier_hash" do
+      jay = User.create :name     => "Jay",
+                        :email    => "alice@wonderland.com",
+                        :password => "roflcopter",
+                        :password_confirmation => "roflcopter",
+                        :login    => "jicksta"
+      
+      jay.should be_valid
+      jay.identifier_hash.should == "de3bedfab34f0973a4f7022a922a9982" # Calculated with the old system
+    end
+    
+    it "should use the new system when changing a password" do
+      krusty = User.find_by_login("krusty")
+      krusty.salt.should be_nil
+      old_crypted_password = krusty.crypted_password
+      krusty.password = krusty.password_confirmation = "roflcopterz!"
+      krusty.save
+      krusty.salt.should_not be_nil
+      krusty.crypted_password.should_not eql(old_crypted_password)
+    end
+    
+  end
 
   describe 'being created' do
     before do
@@ -122,7 +154,7 @@ describe User do
 
   describe 'allows legitimate names:' do
     ['Andre The Giant (7\'4", 520 lb.) -- has a posse',
-     '', '1234567890_234567890_234567890_234567890_234567890_234567890_234567890_234567890_234567890_234567890',
+     '1234567890_234567890_234567890_234567890_234567890_234567890_234567890_234567890_234567890_234567890',
     ].each do |name_str|
       it "'#{name_str}'" do
         lambda do
@@ -133,7 +165,7 @@ describe User do
     end
   end
   describe "disallows illegitimate names" do
-    ["tab\t", "newline\n",
+    ["tab\t", "newline\n", '',
      '1234567890_234567890_234567890_234567890_234567890_234567890_234567890_234567890_234567890_234567890_',
      ].each do |name_str|
       it "'#{name_str}'" do

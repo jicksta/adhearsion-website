@@ -1,4 +1,5 @@
 require 'digest/sha1'
+require 'md5'
 
 class User < ActiveRecord::Base
   
@@ -40,7 +41,28 @@ class User < ActiveRecord::Base
     write_attribute :email, (value ? value.downcase : nil)
   end
 
+  def authenticated?(password)
+    if salt.blank?
+      # This is for the legacy SandboxUser accounts that don't have salts.
+      MD5.md5(password).to_s == crypted_password
+    else
+      super
+    end
+  end
+
   protected
+
+    def encrypt_password
+      if salt.blank? && !new_record? && password
+        self.salt = self.class.make_token
+      end
+      #   # This is for the legacy SandboxUser accounts that don't have salts.
+      #   self.crypted_password = MD5.md5(password).to_s
+      # else
+        super
+      # end
+      self.identifier_hash  = MD5.md5("#{login}:#{password}").to_s
+    end
     
     def make_activation_code
         self.deleted_at = nil

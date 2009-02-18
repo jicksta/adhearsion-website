@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090218010038) do
+ActiveRecord::Schema.define(:version => 20090218033747) do
 
   create_table "example_sections", :force => true do |t|
     t.integer  "position"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20090218010038) do
     t.datetime "deleted_at"
     t.string   "skype"
     t.string   "identifier_hash"
+    t.boolean  "receive_emails"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
