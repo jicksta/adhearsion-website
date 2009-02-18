@@ -341,3 +341,7 @@ div#login-dialog {
 #registration-form tr.even {
   background-color: #EEE;
 }
+
+table#account-information tr td {
+  padding: 5px 15px;
+}

@@ -1,6 +1,36 @@
-<h1>Your Account</h1>
+<h1><%=
+  current_user.name.ends_with?("s") ? "#{current_user.name}'" : "#{current_user.name}'s"
+
+%> Account</h1>
 
 <%= info "Better page coming soon!" %>
 
-<p>Username: <%= current_user.login %></p>
-<p>Email address: <%= current_user.email %></p>
+<h2>Account Information</h2>
+<table id="account-information">
+  <tr>
+    <td>Username</td>
+    <td><%= current_user.login %></td>
+  </tr>
+  <tr>
+    <td>Email address</td>
+    <td><%= current_user.email %></td>
+  </tr>
+  <tr>
+    <td>PIN number</td>
+    <td><%= current_user.pin_number %></td>
+  </tr>
+</table>
+
+<h2>What is this page for?</h2>
+
+<p>This Manage Account page is mostly for features that we'll be rolling out in the near future. For the time being, it's just a way of viewing very basic information about your account.</p>
+
+<p>Here are some of the things we're working on:</p>
+
+<ul>
+  <li><strong>Public sandbox phone number:</strong> Use your cell phone to test your sandbox app!</li>
+  <li><strong>Component sharing:</strong> Let this site aggregate from Github and display your Adhearsion applications and components!</li>
+  <li><strong>Example sharing:</strong> Help contribute to the Adhearsion Examples page but submitting your own!</li>
+  <li><strong>Change your password</strong> Ok, not so amazing but probably useful to someone eventually.</li>
+</ul>
+  
