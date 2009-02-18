@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
   end
   
   def pin_number
-    Verhoeff.checksum_of 1337 + id
+    Verhoeff.checksum_of Verhoeff.checksum_of(1337 + id).to_s.reverse
   end
   
   def reset_api_key

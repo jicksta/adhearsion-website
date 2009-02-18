@@ -18,6 +18,7 @@ require File.join(File.dirname(__FILE__), *%w[.. confluence])
 require 'memcache'
 require 'xml'
 require 'syntax/convertors/html'
+require 'verhoeff'
 
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
