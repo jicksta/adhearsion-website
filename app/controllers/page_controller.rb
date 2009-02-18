@@ -8,7 +8,7 @@ class PageController < ApplicationController
   
   def getting_started
     @title = "Getting Started"
-    @sandbox_user = SandboxUser.new
+    @user = User.new
   end
   
   def architecture

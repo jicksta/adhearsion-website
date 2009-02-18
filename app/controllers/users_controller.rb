@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]
   before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge]
   
+  before_filter :login_required, :only => "account"
+  
   layout "page"
   
   # render new.rhtml
@@ -17,12 +19,21 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @user.register! if @user && @user.valid?
     success = @user && @user.valid?
-    if success && @user.errors.empty?
-      redirect_back_or_default('/')
-      flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
+    
+    if request.xhr?
+      if success && @user.errors.empty?
+        render :text => @user.to_json, :content_type => "text/x-json"
+      else
+        render :text => errors_to_json(@user.errors), :status => 500, :content_type => "text/x-json"
+      end
     else
-      flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
-      render :action => 'new'
+      if success && @user.errors.empty?
+        redirect_back_or_default('/')
+        flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
+      else
+        flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
+        render :action => 'new'
+      end
     end
   end
 
@@ -75,4 +86,15 @@ protected
   def find_user
     @user = User.find(params[:id])
   end
+  
+  
+  def errors_to_json(errors)
+    sanitized = {}
+    errors.each do |attribute, message|
+      sanitized[attribute] ||= []
+      sanitized[attribute] << message
+    end
+    sanitized.to_json
+  end
+  
 end
