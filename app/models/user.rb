@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   validates_length_of       :email,    :within => 6..100 #r@a.wk
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
 
+  before_create :reset_api_key
+
   attr_accessible :login, :email, :name, :password, :password_confirmation, :skype, :receive_emails
 
   def admin?
@@ -49,9 +51,21 @@ class User < ActiveRecord::Base
       super
     end
   end
+  
+  def pin_valid?(pin)
+    pin == pin_number
+  end
+  
+  def pin_number
+    Verhoeff.checksum_of 1337 + id
+  end
+  
+  def reset_api_key
+    self.api_key = self.class.make_token
+  end
 
   protected
-
+  
     def encrypt_password
       if salt.blank? && !new_record? && password
         self.salt = self.class.make_token
