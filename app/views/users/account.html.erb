@@ -33,4 +33,24 @@
   <li><strong>Example sharing:</strong> Help contribute to the Adhearsion Examples page but submitting your own!</li>
   <li><strong>Change your password</strong> Ok, not so amazing but probably useful to someone eventually.</li>
 </ul>
-  
+
+<h2>Change password</h2>
+
+<% form_for :user, :url => {:controller => "users", :action => "change_password" } do |f| %>
+
+<table id="account-information">
+  <tr>
+    <td><label for="user_password">Password: </label></td>
+    <td><%= f.password_field :password %></td>
+  </tr>
+  <tr>
+    <td><label for="user_password_confirmation">Confirm: </label></td>
+    <td><%= f.password_field :password_confirmation %></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><%= submit_tag "Change password" %></td>
+  </tr>
+</table>
+
+<% end %>

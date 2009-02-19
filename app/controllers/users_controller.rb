@@ -78,6 +78,18 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
   
+  def change_password
+    password, confirmation = params[:user].values_at :password, :password_confirmation
+    if password == confirmation
+      current_user.password = current_user.password_confirmation = password
+      current_user.save
+      flash[:notice] = "Password changed successfully"
+    else
+      flash[:error] = "Passwords do not match!"
+    end
+    redirect_to :action => "account"
+  end
+  
   # There's no page here to update or destroy a user.  If you add those, be
   # smart -- make sure you check that the visitor is authorized to do so, that they
   # supply their old password along with a new one to update it, etc.
@@ -86,7 +98,6 @@ protected
   def find_user
     @user = User.find(params[:id])
   end
-  
   
   def errors_to_json(errors)
     sanitized = {}
