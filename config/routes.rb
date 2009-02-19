@@ -11,6 +11,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
 
+  map.username_from_md5 '/api/username_from_md5/:identifier_hash', :controller => "api", :action => "username_from_md5"
 
   map.account "/account", :controller => "users", :action => "account"
   
