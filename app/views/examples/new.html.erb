@@ -1,0 +1,21 @@
+<h2>New Example</h2>
+
+<% form_for(@example) do |f| %>
+  <%= f.error_messages %>
+
+  <h3><%= f.label :title %></h3>
+  <%= f.text_field :title %>
+  
+  <h3>Section</h3>
+  <%= select("example", "example_section_id", @sections.collect {|s| [ s.title, s.id ] }) %>
+  
+  <h3><%= f.label :content %></h3>
+  <%= f.text_area :content, :class => "resizable" %>
+  
+  <%= info "Supports Markdown style", :width => "250px" %>
+
+  <p><%= f.submit "Create" %></p>
+  
+<% end %>
+
+<%= link_to 'Back', :controller => "admin", :action => "examples" %>

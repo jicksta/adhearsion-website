@@ -16,6 +16,9 @@ require 'hpricot'
 require File.join(File.dirname(__FILE__), *%w[.. confluence])
 
 require 'memcache'
+require 'xml'
+require 'syntax/convertors/html'
+require 'verhoeff'
 
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
@@ -79,6 +82,8 @@ Rails::Initializer.run do |config|
   # Activate observers that should always be running
   # Please note that observers generated using script/generate observer need to have an _observer suffix
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
+  
+  config.active_record.observers = :user_observer
   
   confluence_config_file = File.dirname(__FILE__) + "/confluence.yml" 
   if File.exists? confluence_config_file

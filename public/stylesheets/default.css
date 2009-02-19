@@ -1,14 +1,3 @@
-/*#############################################################
-Name: Dark Ritual
-Date: 2006-11-06
-Description: Tribal-style three column layout.
-Author: Viktor Persson
-URL: http://templates.arcsin.se
-
-Feel free to use and modify but please provide credits.
-#############################################################*/
-
-/* standard elements */
 * {
 	margin: 0;
 	padding: 0;
@@ -75,7 +64,7 @@ h1,h2,h3 {color: #5fc6e9;}
 /* misc */
 .clearer {clear: both;}
 .main_right .padded {padding: 6px 2px 6px 16px;}
-.main .padded {padding: 18px 24px;}
+.main .padded {padding: 0 24px 18px 24px; }
 .meta {font-size: 0.8em; color: #666;}
 .left {float: left;}
 .right {float: right;}
@@ -188,28 +177,62 @@ pre {
 
 
 #sandbox-registration {
-  background-color: #2089b3;
-  color: white;
-  padding: 15px 15px 0px 15px;
-  margin: 10px 0 10px 10px;
   width: 210px;
   float: right;
-}
-
-#sandbox-registration h3, #sandbox-registration a {
-  color: white;
-}
-
-#sandbox-registration p.form-error {
-  color: white;
-  margin: 4px 0 0 0;
-  padding: 4px;
-  background-color: red;
-  border: 2px solid red;
-  width: 192px;
+  margin: 5px;
+  font-weight: normal;
 }
 
 #sandbox-registration h2 {
+  margin-top: 0;
+  padding: 4px 0;
+  text-align: center;
+  margin: 2px;
+}
+
+#sandbox-registration div {
+  padding: 10px;
+}
+
+#sandbox-registration .bad-input {
+  background-color: red;
+}
+
+#sandbox-registration input[type=text], #sandbox-registration input[type=password], #sandbox-registration input[type=submit] {
+  /*  font-size: 18px;*/
+  width: 184px;
+}
+
+.info-box {
+  padding: 0 4px;
+  margin: 10px 0;
+}
+
+.info-box p {
+  margin: 5px;
+  padding: 0;
+  font-size: 16px;
+}
+
+.info-box .ui-icon {
+  float: left;
+  margin-right: 0.3em;
+}
+
+#sandbox-registration p#hide-sandbox-registration {
+  text-align: center;
+}
+
+#sandbox-registration p#hide-sandbox-registration a {
+  background-color: white;
+  display: block;
+  margin: 0 auto;
+  padding: 7px;
+}
+
+/*
+
+#sandbox-registration h2 { 
   margin: -15px -15px 8px -15px;
   border-bottom: #2089b3 6px double;
   border-top: 3px solid #2089b3;
@@ -221,42 +244,33 @@ pre {
   text-align: center;
   font-size: 23px;
 }
-#sandbox-registration label {
-  font-size: 15px;
-}
-
-#sandbox-registration label.header {
-  display: block;
-  font-size: 18px;
-}
-
-#sandbox-registration input[type=text], #sandbox-registration input[type=password], #sandbox-registration input[type=submit] {
-  font-size: 18px;
-  width: 200px;
-}
-
-#sandbox-registration .bad-input {
-  background-color: red;
-}
-
+*/
 
 h3.installation-instruction-toggler {
 	display: block;
+	padding: 6px 0 6px 30px;
+	/*
 	background-color: #eee;
 	padding: 6px;
 	border-left: 4px solid #eaeaea;
+	*/
 }
 
 div.installation-instructions {
 	display: none;
+	/*
 	padding: 10px 10px 0 10px;
 	border-left: 4px #eaeaea solid;
+	*/
 }
 
 h3.installation-instruction-toggler:hover {
+  /*
 	background-color: #eaeaea;
+	
 	color: black;
 	border-left: 4px solid black;
+	*/
 }
 
 #homepage-news {
@@ -287,4 +301,47 @@ h3.installation-instruction-toggler:hover {
 #homepage-news div a:hover {
   background-color: black;
   color: white;
+}
+
+h3.example-name {
+  margin-bottom: 0;
+}
+
+div.example div.ui-accordion-content {
+  font-family: "Lucida Sans Unicode",sans-serif;
+  font-size: 13px;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+div.example div.content-html {
+}
+
+div#login-dialog {
+  display: none;
+}
+
+#registration-form {
+  padding: 0;
+  margin-bottom: 20px;
+}
+#registration-form tr td {
+  padding: 15px;
+}
+
+#registration-form tr.comment td {
+  padding-top: 5px;
+}
+
+#registration-form tr td label, #registration-form tr td input {
+  font-size: 16px;
+  width: 290px;
+}
+
+#registration-form tr.even {
+  background-color: #EEE;
+}
+
+table#account-information tr td {
+  padding: 5px 15px;
 }

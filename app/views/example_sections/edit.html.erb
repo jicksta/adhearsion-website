@@ -1,0 +1,21 @@
+<h2>Editing "<%= h @example_section.title %>"</h2>
+
+<% form_for(@example_section) do |f| %>
+  <%= f.error_messages %>
+
+  <h3><%= f.label :title %></h3>
+  <%= f.text_field :title %>
+    
+  <h3><%= f.label :description %></h3>
+  
+  <%= f.text_area :description, :class => "resizable" %>
+  
+  <%= info "Supports Markdown style", :width => "250px" %>
+  
+  <p><%= f.submit "Update" %></p>
+<% end %>
+
+<p>
+<%= link_to 'Show', @example_section %> |
+<%= link_to 'Back', example_sections_path %>
+</p>
