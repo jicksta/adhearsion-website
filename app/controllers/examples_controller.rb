@@ -2,6 +2,8 @@ class ExamplesController < ApplicationController
   
   layout "admin"
   
+  before_filter :login_required, :except => [:show, :index]
+  
   # GET /examples
   # GET /examples.xml
   def index
@@ -22,9 +24,11 @@ class ExamplesController < ApplicationController
   # GET /examples/1.xml
   def show
     @example = Example.find(params[:id])
-
+    layout = (logged_in? && current_user.admin?) ? "admin" : "page"
+    @title = @example.title if layout == "page"
+    
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :layout => layout }
       format.xml  { render :xml => @example }
     end
   end

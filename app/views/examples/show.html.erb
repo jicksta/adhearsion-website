@@ -1,8 +1,10 @@
-<h2><%= h @example.title %></h2>
-<h3>Section "<%=h @example.example_section.title %>"</h3>
+<h2>Example "<%= h @example.title %>"</h2>
+<h3>from section "<%=h @example.example_section.title %>"</h3>
 
 <div class="content-container">
   <%= @example.content_html %>
 </div>
 
+<% if logged_in? && current_user.admin? %>
 <p><%= link_to 'Edit', edit_example_path(@example) %> | <%= link_to 'Back', :controller => "admin", :action => "examples" %></p>
+<% end %>

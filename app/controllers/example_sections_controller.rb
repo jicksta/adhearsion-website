@@ -4,6 +4,8 @@ class ExampleSectionsController < ApplicationController
   
   protect_from_forgery :only => [:create, :update, :destroy] 
   
+  before_filter :login_required
+  
   # GET /example_sections
   # GET /example_sections.xml
   def index
