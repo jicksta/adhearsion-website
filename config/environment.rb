@@ -15,7 +15,6 @@ require 'open-uri'
 require 'hpricot'
 require File.join(File.dirname(__FILE__), *%w[.. confluence])
 
-require 'memcache'
 require 'xml'
 require 'syntax/convertors/html'
 require 'verhoeff'
@@ -85,13 +84,13 @@ Rails::Initializer.run do |config|
   
   config.active_record.observers = :user_observer
   
-  confluence_config_file = File.dirname(__FILE__) + "/confluence.yml" 
-  if File.exists? confluence_config_file
-    confluence_config = YAML.load_file confluence_config_file
-    host, username, password = confluence_config.values_at "host", "username", "password"
-    ::WIKI = Confluence::Server.new(host)
-    ::WIKI.login(username, password)
-  else
-    abort "You must add a config/confluence.yml file so this app can talk to the wiki! See confluence.yml.sample"
-  end
+  # confluence_config_file = File.dirname(__FILE__) + "/confluence.yml" 
+  # if File.exists? confluence_config_file
+  #   confluence_config = YAML.load_file confluence_config_file
+  #   host, username, password = confluence_config.values_at "host", "username", "password"
+  #   ::WIKI = Confluence::Server.new(host)
+  #   ::WIKI.login(username, password)
+  # else
+  #   abort "You must add a config/confluence.yml file so this app can talk to the wiki! See confluence.yml.sample"
+  # end
 end
