@@ -3,11 +3,12 @@ class PageController < ApplicationController
   def index
     @title = "Open-Source Telephony Development Framework"
     @blog_posts = load_blog_posts_from_aggregator
+    
   end
   
   def getting_started
     @title = "Getting Started"
-    @sandbox_user = SandboxUser.new
+    @user = User.new
   end
   
   def architecture

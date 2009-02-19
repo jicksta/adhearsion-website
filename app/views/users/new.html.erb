@@ -1,0 +1,60 @@
+<h1>Create Your Account</h1>
+
+<% @user.password = @user.password_confirmation = nil %>
+
+<%= error_messages_for :user %>
+
+<% form_for :user, :url => users_path do |f| -%>
+  <table id="registration-form">
+    
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td><%= label_tag 'login', "Username" %></td>
+    <td><%= f.text_field :login %></td>
+  </tr>
+
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td><%= label_tag 'name', "Full name" %></td>
+    <td><%= f.text_field :name %></td>
+  </tr>
+
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td><%= label_tag 'email' %></td>
+    <td><%= f.text_field :email %></td>
+  </tr>
+  
+  <tr class="comment <%= cycle('even', 'odd') %>">
+    <td></td>
+    <td>We'll keep your email private. We hate spam too.</td>
+  </tr>
+  
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td><%= label_tag 'skype', "Skype username" %></td>
+    <td><%= f.text_field :skype %></td>
+  </tr>
+  
+  <tr class="comment <%= cycle('even', 'odd') %>">
+    <td></td>
+    <td>This may be used in the future when we get a Skype gateway into our sandbox.</td>
+  </tr>
+
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td><%= label_tag 'password' %></td>
+    <td><%= f.password_field :password %></td>
+  </tr>
+
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td><%= label_tag 'password_confirmation', 'Confirm' %></td>
+    <td><%= f.password_field :password_confirmation %></td>
+  </tr>
+  
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td colspan="2"><%= f.check_box 'receive_emails', :checked => "checked"  %> <label for="receive_emails">Join <a href="http://groups.google.com/group/adhearsion" target="_blank">the Adhearsion mailing list</a>?</label></td>
+  </tr>
+
+
+  </table>
+  
+  <p style="text-align: center"><%= submit_tag 'Sign up', :style => "width:200px; height: 30px"  %></p>
+
+
+<% end -%>

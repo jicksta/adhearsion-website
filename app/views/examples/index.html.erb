@@ -1,0 +1,29 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(".examples").accordion({
+      alwaysOpen: false,
+      header: "h3",
+      active: true,
+      autoHeight: false
+    });  
+  });
+</script>
+
+<% for section in @sections %>
+<h2><%= h section.title %></h2>
+
+<%= section.description_html %>
+
+<div class="examples">
+<% for example in section.examples %>
+
+  <div class="example">
+    <h3 class="example-name ui-state-default ui-corner-all"><a href="#"><%= h example.title %></a></h3>
+    <div class="content-html">
+      <%= example.content_html %>
+    </div>
+  </div>
+  
+<% end %>
+</div>
+<% end %>
