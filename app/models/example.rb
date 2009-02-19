@@ -25,7 +25,7 @@ class Example < ActiveRecord::Base
               end
             end
           end
-          xml_document.root.children.to_s :indent => true
+          xml_document.root.children.to_s.gsub(/<pre>\s+<code>/, "<pre><code>")
         rescue XML::Parser::ParseError
           rendered
         end
