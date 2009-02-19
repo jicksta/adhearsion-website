@@ -19,7 +19,6 @@ require 'xml'
 require 'syntax/convertors/html'
 require 'verhoeff'
 require 'aasm'
-require File.dirname(__FILE__) + "/../vendor/plugins/restful_authentication/rails/init.rb"
 
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
