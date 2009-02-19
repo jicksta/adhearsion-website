@@ -75,7 +75,9 @@ class User < ActiveRecord::Base
       # else
         super
       # end
-      self.identifier_hash  = MD5.md5("#{login}:#{password}").to_s
+      if password
+        self.identifier_hash  = MD5.md5("#{login}:#{password}").to_s
+      end
     end
     
     def make_activation_code
