@@ -1,4 +1,9 @@
 class ApiController < ApplicationController
+  
+  def github_post_receive
+    
+  end
+  
   def username_from_md5
     identifier_hash = params[:identifier_hash]
     if identifier_hash
@@ -11,4 +16,5 @@ class ApiController < ApplicationController
       render :text => "You must supply an identifier hash!", :status => 404
     end
   end
+  
 end

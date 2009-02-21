@@ -72,14 +72,17 @@ class ExamplesController < ApplicationController
   # PUT /examples/1.xml
   def update
     @example = Example.find(params[:id])
-
+    
     respond_to do |format|
       if @example.update_attributes(params[:example])
         flash[:notice] = 'Example was successfully updated.'
         format.html { redirect_to(@example) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html do
+          @sections = ExampleSection.find(:all)
+          render :action => "edit"
+        end
         format.xml  { render :xml => @example.errors, :status => :unprocessable_entity }
       end
     end

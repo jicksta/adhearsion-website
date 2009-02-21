@@ -46,12 +46,16 @@ class Example < ActiveRecord::Base
   
   acts_as_list :scope => "example_section_id"
   
-  before_save :generate_content_html
-  
   protected
+  
+  def validate
+    generate_content_html
+  end
   
   def generate_content_html
     self.content_html = content.blank? ? "" : self.class.format_markdown_to_html(content)
+  rescue BlueCloth::FormatError => syntax_error
+    errors.add "content", "Markdown Syntax Error. #{syntax_error.message}"
   end
   
   

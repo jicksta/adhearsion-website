@@ -19,4 +19,8 @@ module ApplicationHelper
     MESSAGE
   end
   
+  def auth_token
+    javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
+  end
+  
 end
