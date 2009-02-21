@@ -34,13 +34,8 @@
     
     <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
     
-    <% link_to example_section, :confirm => 'Are you sure?', :method => :delete do %>
-      <span class="ui-icon ui-icon-trash" title="Delete"></span>
-    <% end %>
-    
-    <% link_to edit_example_section_path(example_section) do %>
-      <span class="ui-icon ui-icon-pencil" title="Edit"></span>
-    <% end %>
+    <%= delete_icon example_section_url(example_section) %>
+    <%= edit_icon edit_example_section_url(example_section) %>
     
     <p><%= h example_section.title %></p>
     

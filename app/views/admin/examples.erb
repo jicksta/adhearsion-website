@@ -33,43 +33,6 @@
   });
 </script>
 
-<script type="text/javascript">
-  function del(victim, url) {
-    dialog_box = document.createElement("p");
-    dialog_box.innerHTML = "Are you sure?<br/><br/>There is no undo.";
-    
-    $(dialog_box).dialog({
-			resizable: false,
-			height:240,
-			modal: true,
-			autoOpen: true,
-			draggable: false,
-			title: "Confirm deletion",
-			buttons: {
-				'Delete': function() {
-          $.ajax({
-            url:   url,
-            type: "POST",
-            async: false,
-            data: { _method: "delete", authenticity_token: AUTH_TOKEN },
-            success: function() {
-              $(dialog_box).dialog('close');
-              $(victim).toggle("slide");
-            },
-            error: function() {
-    				  $(dialog_box).dialog('close');
-            }
-          });
-				},
-				Cancel: function() {
-					$(dialog_box).dialog('close');
-				}
-			}
-		});
-  }
-  
-</script>
-
 <p class="new-link">
   <% link_to new_example_path, {:title => "Edit"} do %>
     <button class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-plusthick"></span> New Example</button>
@@ -89,14 +52,9 @@
     
       <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
       
-      <a href="#" onclick="javascript:del(this.parentNode, '<%= example_url(example) %>');" title="Delete">
-        <span class="ui-icon ui-icon-trash"></span>
-      </a>
-      
-      <% link_to edit_example_path(example) do %>
-        <span class="ui-icon ui-icon-pencil" title="Edit"></span>
-      <% end %>
-      
+      <%= delete_icon example_url(example) %>
+      <%= edit_icon edit_example_url(example) %>
+             
       <p><%= h example.title %></p>
     
     </li>

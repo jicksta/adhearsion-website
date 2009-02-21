@@ -1,7 +1,34 @@
-// This lets jQuery AJAX requests always send along Rails' authenticity token. AUTH_TOKEN is defined in the layout.
-// $(document).ajaxSend(function(event, request, settings) {
-//   if (typeof(AUTH_TOKEN) == "undefined") return;
-//   // settings.data is a serialized string like "foo=bar&baz=boink" (or null)
-//   settings.data = settings.data || "";
-//   settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
-// });
+// Used on administration pages.
+function deleteListItem(victim, url) {
+  dialog_box = document.createElement("p");
+  dialog_box.innerHTML = "Are you sure?<br/><br/>There is no undo.";
+  
+  $(dialog_box).dialog({
+		resizable: false,
+		height:240,
+		modal: true,
+		autoOpen: true,
+		draggable: false,
+		title: "Confirm deletion",
+		buttons: {
+			'Delete': function() {
+        $.ajax({
+          url:   url,
+          type: "POST",
+          async: false,
+          data: { _method: "delete", authenticity_token: AUTH_TOKEN },
+          success: function() {
+            $(dialog_box).dialog('close');
+            $(victim).toggle("slide");
+          },
+          error: function() {
+  				  $(dialog_box).dialog('close');
+          }
+        });
+			},
+			Cancel: function() {
+				$(dialog_box).dialog('close');
+			}
+		}
+	});
+}
