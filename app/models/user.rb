@@ -24,17 +24,34 @@ class User < ActiveRecord::Base
   before_create :reset_api_key
 
   attr_accessible :login, :email, :name, :password, :password_confirmation, :skype, :receive_emails
+  
+  class << self
+    
+    def authenticate(login, password)
+      return nil if login.blank? || password.blank?
+      u = find_in_state :first, :active, :conditions => {:login => login.downcase} # need to get the salt
+      u && u.authenticated?(password) ? u : nil
+    end
+    
+    def id_from_pin_number(pin)
+      pin = pin.to_s
+      if Verhoeff.checks_out?(pin) && Verhoeff.checks_out?(pin[0..-2].reverse)
+        pin[1..-2].reverse.to_i - 1337
+      else
+        nil  
+      end
+    end
+    
+    def find_by_pin_number(pin)
+      id = id_from_pin_number pin
+      find(id) if id
+    end
+  end
 
   def admin?
     %w[jicksta jsgoecke].include? login
   end
   
-  def self.authenticate(login, password)
-    return nil if login.blank? || password.blank?
-    u = find_in_state :first, :active, :conditions => {:login => login.downcase} # need to get the salt
-    u && u.authenticated?(password) ? u : nil
-  end
-
   def login=(value)
     write_attribute :login, (value ? value.downcase : nil)
   end
