@@ -31,6 +31,27 @@
   <li><strong>Example sharing:</strong> Help contribute to the Adhearsion Examples page but submitting your own!</li>
 </ul>
 
+<h2>Update information</h2>
+
+<% form_for current_user, :url => {:controller => "users", :action => "update_information" } do |f| %>
+
+<table id="account-information">
+  <tr>
+    <td><label for="user_skype">Skype username: </label></td>
+    <td><%= f.text_field :skype %></td>
+  </tr>
+  <tr>
+    <td><label for="user_email">Email address: </label></td>
+    <td><%= f.text_field :email %></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><%= submit_tag "Update information" %></td>
+  </tr>
+</table>
+
+<% end %>
+
 <h2>Change password</h2>
 
 <% form_for :user, :url => {:controller => "users", :action => "change_password" } do |f| %>

@@ -78,6 +78,17 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
   
+  def update
+    new_data = params[:user].slice :skype, :email
+    
+    if current_user.update_attributes(new_data)
+      flash[:notice] = "Account information updated!"
+    else
+      flash[:error] = current_user.errors.full_messages.join("<br/>")
+    end
+    redirect_to :action => "account"
+  end
+  
   def change_password
     password, confirmation = params[:user].values_at :password, :password_confirmation
     if password == confirmation
