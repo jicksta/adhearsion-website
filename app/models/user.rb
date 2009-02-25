@@ -35,8 +35,13 @@ class User < ActiveRecord::Base
     
     def id_from_pin_number(pin)
       pin = pin.to_s
-      if Verhoeff.checks_out?(pin) && Verhoeff.checks_out?(pin[0..-2].reverse)
-        pin[1..-2].reverse.to_i - 1337
+      first_checksum = pin[-1].chr.to_i
+      second_checksum = pin[0].chr.to_i
+      offset_id = pin[1..-2].reverse
+      p first_checksum, second_checksum, offset_id
+      if Verhoeff.checksum_digit_of(offset_id) == first_checksum &&
+         Verhoeff.checksum_digit_of("#{offset_id}#{first_checksum}") == second_checksum
+        offset_id.to_i - 1337
       else
         nil  
       end
@@ -74,7 +79,10 @@ class User < ActiveRecord::Base
   end
   
   def pin_number
-    Verhoeff.checksum_of Verhoeff.checksum_of(1337 + id).to_s.reverse
+    offset_id = 1337 + id
+    first  = Verhoeff.checksum_digit_of offset_id
+    second = Verhoeff.checksum_digit_of "#{offset_id}#{first}"
+    "#{second}#{offset_id.to_s.reverse}#{first}"
   end
   
   def reset_api_key
