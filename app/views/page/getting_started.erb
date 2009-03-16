@@ -189,11 +189,45 @@ password: adhearsionislove</pre>
   
 <p>We recommend you use the free Gizmo5 softphone to place calls into the sandbox. Gizmo5 is a free, cross-platform, and gets through firewalls well. Go to <a href="http://gizmoproject.com" target="_blank">the Gizmo5 website</a> and download Gizmo5 for your platform. When prompted to sign up for a Gizmo5 account, go ahead and get one.</p>
 
-<p>You're almost done! When the Gizmo interface comes up, enter <i><kbd>xyz</kbd></i><kbd>@sandbox.adhearsion.com</kbd> in the text field on the interface, replacing <i><kbd>xyz</kbd></i> with your sandbox account username. VoIP phone system extensions may be in the format of an email address.</p>
+<p>You're almost done! When the Gizmo5 interface comes up, enter <i><kbd>xyz</kbd></i><kbd>@sandbox.adhearsion.com</kbd> in the text field on the interface, replacing <i><kbd>xyz</kbd></i> with your sandbox account username. VoIP phone system extensions may be in the format of an email address.</p>
 
-<p>Press the dial button on Gizmo. When it connects, you should see your Adhearsion application scroll as you hear a woman's voice say "Hello world!".</p>
+<p>Press the dial button on Gizmo5. When it connects, you should see your Adhearsion application scroll as you hear a woman's voice say "Hello world!".</p>
 
 <p>That's it! Feel free to play around with your <kbd>dialplan.rb</kbd> file and add more code. The sandbox is here for you to play with to your heart's content.</p>
+
+<h3>Alternative Access Methods</h3>
+
+<p>While Gizmo5 will allow an unlimited number of callers to access the Sandbox, we have also made the following access methods available. Although each of these is limited to 10 simultaneous connections to the Sandbox.</p>
+
+<h4>Phonefromhere</h4>
+
+<p><a href="http://www.phonefromhere.com"><img src="http://api.phonefromhere.com/gateway/image/phonefromhere-logo.jpg" alt=""/></a></p>
+
+<p><a href="http://www.phonefromhere.com">Phonefromhere</a> has a Java <a href="http://en.wikipedia.org/wiki/IAX2">IAX2</a> client that is a great way to access the Sandbox from the internet. After you have signed up for a Sandbox account you may simply use this URL from your web browser:
+
+	<a href="http://api.phonefromhere.com/gateway/adhearsion.xsql?caller=your_username">http://api.phonefromhere.com/gateway/adhearsion.xsql?caller=your_username</a>
+	
+This will then dial into your Sandbox application directly.</p>	
+
+<h4>Skype</h4>
+
+<p><a href="http://www.skype.com"><img src="http://about.skype.com/online.png" alt=""/></a></p>
+
+<p>We have been participating in the <a href="http://share.skype.com/sites/en/2008/09/skype_for_asterisk_beta.html"Skype for Asterisk (SFA)</a> beta.</p> Where we have already developed the <a href="http://github.com/jsgoecke/skype_utils">Skype Utils</a> Adhearsion component to get you started once the SFA is publicly available. In the meantime, we have made SFA another access method to the Sandbox. After you have signed up for your Sandbox account, simply login and add your Skype username that you will be calling in from to your <a href="http://adhearsion.com/account">Account</a>. Then, from your Skype client call:
+
+	sandbox.adhearsion.com
+
+This will take you straight to your Sandbox application running locally.</p>
+
+<h4>Voxbone</h4>
+
+<p><a href="http://www.voxbone.com"><img src="http://www.voxbone.com/images/voxbone.png" alt=""/></a></p>
+
+<p><a href="http://www.voxbone.com">Voxbone</a> has kindly donated a 10 channel inbound phone number for use with the Adhearsion Sandbox. For the Voxbone access method you will need to obtain your PIN number available on the <a href="http://adhearsion.com/account">Account</a> page of the Adhearsion website. Then, simply dial:
+	
+	+1.213.325.2621
+
+Enter your PIN when asked and the call will forward to your local application connected to the Sandbox.</p>
 
 <h2>What you haven't seen yet.</h2>
 
