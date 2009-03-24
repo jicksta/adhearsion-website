@@ -21,20 +21,44 @@ class User < ActiveRecord::Base
   validates_length_of       :email,    :within => 6..100 #r@a.wk
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
 
+  validates_uniqueness_of :skype, :allow_nil => true
+
   before_create :reset_api_key
 
   attr_accessible :login, :email, :name, :password, :password_confirmation, :skype, :receive_emails
+  
+  class << self
+    
+    def authenticate(login, password)
+      return nil if login.blank? || password.blank?
+      u = find_in_state :first, :active, :conditions => {:login => login.downcase} # need to get the salt
+      u && u.authenticated?(password) ? u : nil
+    end
+    
+    def id_from_pin_number(pin)
+      pin = pin.to_s
+      first_checksum = pin[-1].chr.to_i
+      second_checksum = pin[0].chr.to_i
+      offset_id = pin[1..-2].reverse
+      p first_checksum, second_checksum, offset_id
+      if Verhoeff.checksum_digit_of(offset_id) == first_checksum &&
+         Verhoeff.checksum_digit_of("#{offset_id}#{first_checksum}") == second_checksum
+        offset_id.to_i - 1337
+      else
+        nil  
+      end
+    end
+    
+    def find_by_pin_number(pin)
+      id = id_from_pin_number pin
+      find(id) if id
+    end
+  end
 
   def admin?
     %w[jicksta jsgoecke].include? login
   end
   
-  def self.authenticate(login, password)
-    return nil if login.blank? || password.blank?
-    u = find_in_state :first, :active, :conditions => {:login => login.downcase} # need to get the salt
-    u && u.authenticated?(password) ? u : nil
-  end
-
   def login=(value)
     write_attribute :login, (value ? value.downcase : nil)
   end
@@ -57,7 +81,10 @@ class User < ActiveRecord::Base
   end
   
   def pin_number
-    Verhoeff.checksum_of Verhoeff.checksum_of(1337 + id).to_s.reverse
+    offset_id = 1337 + id
+    first  = Verhoeff.checksum_digit_of offset_id
+    second = Verhoeff.checksum_digit_of "#{offset_id}#{first}"
+    "#{second}#{offset_id.to_s.reverse}#{first}"
   end
   
   def reset_api_key

@@ -11,6 +11,10 @@ class PageController < ApplicationController
     @user = User.new
   end
   
+  def testing
+    
+  end
+  
   def architecture
     @title = "Architecture Overview"
   end

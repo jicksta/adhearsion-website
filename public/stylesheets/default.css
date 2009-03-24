@@ -332,10 +332,12 @@ div#login-dialog {
 #registration-form tr.comment td {
   padding-top: 5px;
 }
-
-#registration-form tr td label, #registration-form tr td input {
-  font-size: 16px;
+#registration-form tr td input[type=text], #registration-form tr td input[type=password] {
+  font-size: 25px;
   width: 290px;
+}
+#registration-form tr td label {
+  font-size: 16px;
 }
 
 #registration-form tr.even {

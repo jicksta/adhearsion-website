@@ -1,17 +1,23 @@
 <h1>Roadmap</h1>
 
 <h2>0.8.3</h2>
+
+<h3>Gem-based components</h3>
+
+<p>This feature will extend the existing Adhearsion plugin system by allowing components to be installed as system-wide gems. The big advantage of this approach is components, especially those that come with Adhearsion by default, can be upgraded without a tedious manual installation process.</p>
+
+<h2>0.8.4</h2>
+
 <h3>Call Routing DSL</h3>
 
 <p>The Call Routing DSL is a way of de-coupling call routing logic from the dialplan and other parts of the framework. The dial() method will simply take a number and the logic for passing that into a trunk will be handled by these user-defined call routes.</p>
 
-<h2>0.8.4</h2>
+<h2>0.8.5</h2>
 
 <h3>Expanded configuration file generators</h3>
 <p>This is actually a feature already mostly implemented, but before it's thoroughly integrated into the rest of Adhearsion, things such as the call-routing DSL, new components system, new AMI library and new events system must be implemented properly. As a note, the configuration file generators of Adhearsion will work especially well when dealing with Asterisk clusters, helping keep config file in sync across nodes. The generators will also probably replace Rubigen, the current library used by Adhearsion to aid generating new projects with the "ahn" command.</p>
 
-<h2>0.8.5</h2>
-
+<h2>0.8.6</h2>
 <h3>Migrate Adhearsion tests back to RSpec</h3>
 <p>Presently Adhearsion mostly uses a Ruby testing framework called Test-Spec, though it has a much smaller community and not nearly the number of features as a competing framework called RSpec. Adhearsion was once on RSpec quite a while ago and certain portions of the Adhearsion codebase are tested with RSpec but, in this release, it'll be back on it entirely. It's a good rule of thumb for serious programming efforts to periodically refactor their unit tests and this will be good timing for the due maintenance.</p>
 
@@ -57,3 +63,7 @@
 <h3>Sandbox Component</h3>
 
 <p>New Adhearsion applications now have a Sandbox component to be used with the Getting Started guide. The component allows incoming Asterisk AGI calls to be received by Adhearsion running behind a firewall, by connecting out to a reverse AGI proxy on the Adhearsion Asterisk server.</p>
+
+<h2>0.8.2</h2>
+
+<p>Only minor bug fixes in this release.</p>

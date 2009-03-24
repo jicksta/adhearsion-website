@@ -53,7 +53,7 @@ class UsersController < ApplicationController
       flash[:error] = "The activation code was missing.  Please follow the URL from your email."
       redirect_back_or_default('/')
     else 
-      flash[:error]  = "We couldn't find a user with that activation code -- check your email? Or maybe you've already activated -- try signing in."
+      flash[:error]  = "We couldn't find a user with that activation code. Did you already activate?"
       redirect_back_or_default('/')
     end
   end
@@ -76,6 +76,17 @@ class UsersController < ApplicationController
   def purge
     @user.destroy
     redirect_to users_path
+  end
+  
+  def update
+    new_data = params[:user].slice :skype, :email
+    
+    if current_user.update_attributes(new_data)
+      flash[:notice] = "Account information updated!"
+    else
+      flash[:error] = current_user.errors.full_messages.join("<br/>")
+    end
+    redirect_to :action => "account"
   end
   
   def change_password
