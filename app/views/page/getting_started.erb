@@ -1,10 +1,17 @@
 <h1>Getting Started</h1>
 
+<div style="float:right; clear:right; width: 100px; margin-left: 10px; background-color: #FBF9BA; padding: 5px; text-align: center">
+  <p style="margin:0; padding:0">We're extremely thankful to <a href="http://voxeo.com">Voxeo</a> for providing us a sweet server on which we run the sandbox infrastructure!</p>
+</div>
+
+
 <p>Because Adhearsion is a framework for writing telephony applications, it depends on a bit of lower-level plumbing to get an application running. We want everyone to easily give Adhearsion a try so we've set up a <strong>completely free</strong> sandbox telephony system which allows you to use Adhearsion without setting up Asterisk. You won't be able to dial out to landline and cell phones but you will be able to get a good idea of what Adhearsion is and how it works.</p>
 
 <% unless logged_in? %>
 <%= render :partial => "sandbox_registration" %>
 <% end %>
+
+
 <p>We'll go into these steps in more detail but, at a high level, this is all that is required to use the sandbox:</p>
 
 <ul>
