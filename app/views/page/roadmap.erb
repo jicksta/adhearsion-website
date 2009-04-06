@@ -44,6 +44,14 @@
 <p>This will allow Adhearsion to notify the project maintainer of certain failures within an Adhearsion process and allow the maintainer to recover from them.</p>
 
 
+<h3>EventMachine</h3>
+
+<p>EventMachine is a third-party library that essentially allows applications that make heavy use of sockets and events perform much better by utilizing the kernel timer and evented networking. Unfortunately if we migrated to EventMachine today we would break JRuby compatibility. There is a separate project within the EventMachine world to rewrite EventMachine's native extensions in Java for JRuby compatibility but, unfortunately, the project is still far behind.</p>
+
+<h3>Ruby 1.9.1 Compatibility</h3>
+
+<p>Unfortunately many third party gems don't work with Ruby 1.9.1 (or even 1.9) yet.</p>
+
 <h2>Older milestones</h2>
 
 <h2>0.8.0</h2>
