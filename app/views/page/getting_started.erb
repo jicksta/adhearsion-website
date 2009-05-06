@@ -222,11 +222,13 @@ password: iamthegalacticrooolah</pre>
 
 
 
-<h3>Using Skype</h3>
+<h3>Using Skype <em style="color: red; font-weight: bold">(BETA)</em></h3>
 
 <img src="/images/skype-sandbox.png" style="float:right; margin: -5px -28px -28px -10px" alt=""/>
 
 <p>Skype recently seeded out a new beta release of their <a href="http://share.skype.com/sites/en/2008/09/skype_for_asterisk_beta.html">Asterisk extension that enables Skype interoperability</a>. Tough we can't assure we'll have this forever, you can certainly use it to test your application using Skype's great softphone.</p>
+
+<p><em>Note: The Skype for Asterisk channel driver is still beta software is sometimes must be disabled because it crashes Asterisk altogether. If the Skype gateway is down, this is probably why.</em></p>
 
 <p>For Skype, we have to handle calls to the sandbox a bit differently. Because we can't take over your Skype account or register arbitrary accounts for you, you will have to call into <em>our</em> sandbox's Skype account and our server will have to convert the incoming call's Skype username (your username) to your respective sandbox username so it can find your running Adhearsion app. For this reason, you'll have to <strong>enter your Skype username on <a href="/account">the Manage Account</a> page</strong> if you already haven't.</p>
 
