@@ -15,6 +15,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect '/api/github/post_receive', :controller => "api", :action => "github_post_receive"
 
+  map.connect '/api/sandbox_test', :controller => "api", :action => "sandbox_test"
+
   map.account "/account", :controller => "users", :action => "account"
   
   map.connect "example_section/reorder_sections", :controller => "example_sections", :action => "reorder_sections" 
